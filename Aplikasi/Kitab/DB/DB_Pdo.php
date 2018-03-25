@@ -51,12 +51,12 @@ class DB_Pdo extends \PDO
 		}
 
 		$sth->execute();
-		$masalah = $sth->errorInfo(); # semak jika ada error
+		/*$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
 		else # pulangkan pembolehubah
-			return $sth->fetchAll($fetchMode);
+		*/	return $sth->fetchAll($fetchMode);
 	}
 
 	/**
@@ -154,13 +154,14 @@ class DB_Pdo extends \PDO
 		}//*/
 
 		$sth->execute();
-		$masalah = $sth->errorInfo(); # semak jika ada error
+		//$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
-		if (strpos($masalah[2], 'Unknown column') !== false) 
+		/*if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
 		else # pulangkan pembolehubah
+		*/
 			return $sth->fetchAll($fetchMode);
-		//*/
+		
 	}
 
 	/**

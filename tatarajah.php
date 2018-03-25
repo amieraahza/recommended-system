@@ -56,7 +56,7 @@ else
 {	# isytihar tatarajah mysql
 	define('DB_TYPE', 'mysql');
 	define('DB_HOST', 'localhost');
-	define('DB_NAME', 'latihan');
+	define('DB_NAME', 'recommendationsystem');
 	define('DB_USER', 'root');
 	define('DB_PASS', 'root');
 	# isytihar lokasi folder js
