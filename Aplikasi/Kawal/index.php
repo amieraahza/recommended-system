@@ -99,7 +99,25 @@ class Index extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('index', 'register', $noInclude=1); # $noInclude=0
 	}
 #==========================================================================================
-	function kaunter()
+	public function ujikaji()
+	{
+		//echo "kite ada di kelas index function ujikaji";
+		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+			$myTable = "biodata";
+			$medan = '*';
+			$carian[] = array('fix'=>'%like%', # cari x= atau %like%
+				'atau'=>'WHERE', # WHERE / OR / AND
+				'medan' => 'namaawal', # cari dalam medan apa
+				'apa' =>"mira"); # benda yang dicari
+			# mula cari $cariID dalam $myJadual
+				$this->papar->cariNama[$myTable] = 
+					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
+					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
+
+		echo '<pre>$this->papar->cariNama::'; print_r($this->papar->cariNama) . '<pre>';
+	}
+#==========================================================================================
+	public function kaunter()
 	{
 		# Set pemboleubah utama
 		if( isset($this->tanya->dudukmana) ):

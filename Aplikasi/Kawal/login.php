@@ -42,11 +42,28 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function registerid()
 	{
 		# debug $_POST
-		echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
 		//$this->tanya->dapatid($_POST['password']);
 
-		# semak data $this->tanya->ujiID(); 
-		//$this->tanya->semakid();
+		# Set pemboleubah utama
+		$myTable = 'biodata';
+		$senarai = array('biodata');
+		$medan = '`namaawal`,`namaakhir`,`phone_number`,`email`,`password`,`level`';
+
+		# bentuk tatasusunan
+		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
+		$senaraiData = $this->tanya->ubahPosmen($posmen);
+		# sql insert
+		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
+		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->log_sql($myTable, $medan, $senaraiData);
+		# semak data
+			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
+        # pergi papar kandungan
+		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
+		header('location: ' . URL . '');
 		//*/
 	}
 	

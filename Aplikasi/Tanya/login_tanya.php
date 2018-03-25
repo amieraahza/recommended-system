@@ -7,7 +7,66 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
+	
+	function registerid($medan = 'namaawal,namaakhir,phone_number,email,password1,password2', $jadual = 'biodata')
+	{
+		$namaawal = $_POST[$jadual]['namaawal'];
+		$namaakhir = $_POST[$jadual]['namaakhir'];
+		$phonenumber = $_POST[$jadual]['phone_number'];
+		$email = $_POST[$jadual]['email'];
+		$password1 = $_POST[$jadual]['password1'];
+		$password2 = $_POST[$jadual]['password2'];
+		$password = ($password1 == $password2) ? $password1: NULL;
+		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $password);
 
+		$semakLogin = "
+			INSERT INTO `$jadual` ($medan) VALUES
+			($namaawal, $namaakhir, $phone_number, $email, $password)  
+			";
+
+		echo "<pre> $semakLogin </pre>";
+	}
+
+	public function semakPost($myTable, $senarai, $post)
+	{
+		# validasi data $_POST, masuk dalam $posmen, validasi awal
+		foreach ($post as $myTable => $value)
+			if ( in_array($myTable,$senarai) )
+				foreach ($value as $key => $value2)
+					foreach ($value2 as $kekunci => $papar)
+						$posmen[$myTable][0][$kekunci] = bersih($papar);
+						//echo "$kekunci";
+		
+		# pulangkan pemboleubah
+		return $posmen;		
+	}
+	
+	public function ubahPosmen($posmen)
+	{
+		$password1 = $posmen['biodata'][0]['password1'];
+		$password2 = $posmen['biodata'][0]['password2'];
+		$password = ($password1 == $password2) ? $password1: NULL;
+		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $password);
+		$level = 'user';
+
+		$senaraiData = array();
+		foreach ($posmen as $key => $value1):
+			foreach ($value1 as $key2 => $dataS):
+				$senaraiData[] = "('" 
+					. ($dataS['namaawal']) . "', '" 
+					. ($dataS['namaakhir']) . "', '" 
+					. ($dataS['phone_number']) . "', '" 
+					. ($dataS['email']) . "', '" 
+					. ($password) . "', '" 
+					. ($level) . "', '" 
+					. "')";
+			endforeach;
+		endforeach;
+
+		$senaraiData[0] = substr($senaraiData[0], 0, -5) . ')';
+		# pulangkan pemboleubah
+		return $senaraiData;
+	}
 	function dapatid($nama)
 	{
 		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>| ';
