@@ -34,17 +34,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<h2 class="sub-head">Sign Up</h2>
 		<div class="sub-main">	
 			<form action="<?php echo URL?>login/registerid" method="POST">
-				<input placeholder="First Name" name="biodata[namaawal]" type="text" required="">
+				<input placeholder="First Name" name="biodata[0][namaawal]" type="text" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
-				<input placeholder="Last Name" name="biodata[namaakhir]" type="text" required="">
+				<input placeholder="Last Name" name="biodata[0][namaakhir]" type="text" required="">
 					<span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
-				<input placeholder="Phone Number" name="biodata[phonenumber]"type="text" required="">
+				<input placeholder="Phone Number" name="biodata[0][phone_number]"type="text" required="">
 					<span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span><br>
-				<input placeholder="Email" name="biodata[email]" type="text" required="">
+				<input placeholder="Email" name="biodata[0][email]" type="text" required="">
 					<span class="icon4"><i class="fa fa-envelope" aria-hidden="true"></i></span><br>
-				<input  placeholder="Password" name="biodata[password1]" type="password" required="">
+				<input  placeholder="Password" name="biodata[0][password1]" type="password" required="">
 					<span class="icon5"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
-				<input  placeholder="Confirm Password" name="biodata[password2]"type="password" required="">
+				<input  placeholder="Confirm Password" name="biodata[0][password2]"type="password" required="">
 					<span class="icon6"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
 				
 				<input type="submit" value="sign up">
