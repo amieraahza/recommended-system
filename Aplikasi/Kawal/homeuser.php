@@ -51,8 +51,10 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	function logout()
 	{
+		\Aplikasi\Kitab\Sesi::init();
 		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
 		\Aplikasi\Kitab\Sesi::destroy();
+		//echo '<pre>selepas:'; print_r($_SESSION) . '</pre>';
 		header('location: ' . URL);
 		//exit;
 	}

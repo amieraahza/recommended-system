@@ -10,7 +10,7 @@
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
   <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="<?php echo FONTAWESOME ?>">
-  <link rel="stylesheet" type="text/css" href="<?php echo $pautan ?>css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo BOOTSTRAPCSS ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo $pautan ?>css/animate.css">
   <link rel="stylesheet" type="text/css" href="<?php echo $pautan?>css/style.css">
   <!-- =======================================================
@@ -22,6 +22,37 @@
 </head>
 
 <body>
+
+<!-- mula - nav atas sekali ---------------------------------------------------------------------------------------------- -->
+<nav class="navbar navbar-inverse" role="navigation">
+<!-- div class="navbar navbar-custom" role="navigation" -->
+  <div class="container-fluid">
+    <!-- menu kiri mula -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#anjung">Home</a>
+      <a class="navbar-brand" href="<?php echo URL ?>homeuser/logout">
+        <span class="glyphicon glyphicon-off"></span>Logout</a>
+    </div>
+    <!-- menu kiri tamat -->
+    <!-- menu kanan mula -->
+    <div class="navbar-collapse collapse">
+    </div>
+    <!-- menu kanan tamat -->
+  </div>
+</nav>
+<!-- tamat - nav atas sekali ---------------------------------------------------------------------------------------------- -->
+
+<?php 
+\Aplikasi\Kitab\Sesi::init();
+//echo '<pre>'; print_r($_SESSION); echo '</pre>';
+?>
+
   <div class="content">
     <div class="container wow fadeInUp delay-03s">
       <div class="row">
