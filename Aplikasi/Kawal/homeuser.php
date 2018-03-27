@@ -39,15 +39,14 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 #==========================================================================================
-	public function pelawat()
+	public function search()
 	{
 		# Set pemboleubah utama
-		$this->papar->tajuk = 'Ruangtamu';
-		$this->papar->senarai['modul'] = $this->tanya->jadualModul();
+		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('pelawat');
+		//$this->paparKandungan('pelawat');
 	}
 #-------------------------------------------------------------------------------------------
 	function logout()

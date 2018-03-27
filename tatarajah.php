@@ -79,3 +79,4 @@ define('MSICBARU', serialize (
 		$e.'msic_v1',$e.'msic_bandingan',
 		$e.'msic',$e.'msic_nota_kaki')
 	));	
+define('cse-key', 'AIzaSyD6ve6yqRMtIilchGO5hncaQpxVVZ7CtBg');

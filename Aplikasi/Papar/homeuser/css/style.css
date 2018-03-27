@@ -280,7 +280,7 @@ h2.subs-title  {
     border-radius: 30px;
     color: #000;
 }
-.subscribe_form input[type=email]
+.subscribe_form input[type=text]
 {
     padding-left: 30px;
 }
