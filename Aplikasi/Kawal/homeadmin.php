@@ -59,4 +59,49 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//exit;
 	}
 #==========================================================================================
+	public function website($action)
+	{
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function website';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('form_add_website', $noInclude = 1);
+	}
+#==========================================================================================
+	public function item($action)
+	{
+		# Set pemboleubah utama
+		echo 'kite sekarang berada di kelas Homeadmin function item';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan('pelawat');
+	}
+#==========================================================================================
+	public function category($action)
+	{
+		# Set pemboleubah utama
+		echo 'kite sekarang berada di kelas Homeadmin function category';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan('pelawat');
+	}
+#==========================================================================================
+	public function rating($action)
+	{
+		# Set pemboleubah utama
+		echo 'kite sekarang berada di kelas Homeadmin function rating';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan('pelawat');
+	}
+#==========================================================================================
+
 }
