@@ -1,4 +1,7 @@
-<?php $pautan = URL . 'sumber/rangka-dawai/homeuser/'; ?>
+<?php $pautan = URL . 'sumber/rangka-dawai/homeuser/';
+\Aplikasi\Kitab\Sesi::init();
+//echo '<pre>'; print_r($_SESSION); echo '</pre>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,11 +50,6 @@
   </div>
 </nav>
 <!-- tamat - nav atas sekali ---------------------------------------------------------------------------------------------- -->
-
-<?php 
-\Aplikasi\Kitab\Sesi::init();
-//echo '<pre>'; print_r($_SESSION); echo '</pre>';
-?>
 
   <div class="content">
     <div class="container wow fadeInUp delay-03s">

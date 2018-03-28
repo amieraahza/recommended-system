@@ -113,6 +113,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$email = $_POST['biodata'][0]['email'];
 		$passwordAsal = $_POST['biodata'][0]['password'];
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $passwordAsal);
+		//echo '<pre>password->'; print_r($password); echo '</pre>';
 
 		# semak database
 			$myTable = "biodata";
@@ -130,6 +131,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
 					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 				$kira = sizeof($cariNama);
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
 		//echo '<pre>$cariNama::'; print_r($cariNama) . '<pre>';
 		//echo '<hr>$data->' . sizeof($cariNama) . '<hr>';
 
@@ -162,6 +164,8 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//header('location:' . URL . 'ruangtamu');
 		if ($level == 'user')
 			header('location:' . URL . 'homeuser');
+		elseif($level == 'admin')
+			header('location:' . URL . 'homeadmin');
 		else
 			header('location:' . URL . ''); //*/
 	}
