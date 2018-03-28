@@ -67,8 +67,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'admin_website';
-		$this->papar->senarai = array('admin_website');
-		$this->papar->medan = '`website_name`,`website_link`,`note`';
+		$this->papar->medan = array('website_name','website_link','note');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -83,8 +82,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'admin_item';
-		$this->papar->senarai = array('admin_item');
-		$this->papar->medan = '`item_name`,`item_website	`,`link_item`,`link_picture`, `description`';
+		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -99,8 +97,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'admin_category';
-		$this->papar->senarai = array('admin_category');
-		$this->papar->medan = '`category_name`, `item_id`, `website_id`';
+		$this->papar->medan = array('category_name', 'item_id', 'website_id');
 
 
 		# Pergi papar kandungan
@@ -116,12 +113,66 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'rating';
-		$this->papar->senarai = array('rating');
-		$this->papar->medan = '`user_id`, `website_id`, `rating`, `category_id`';
+		$this->papar->medan = array('user_id', 'website_id', 'rating', 'category_id');
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan('form_add_rating', $noInclude = 1);
+	}
+#==========================================================================================
+	public function addform($action = NULL)
+	{
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function rating';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Set pemboleubah utama
+		if ($action == 'admin_website') 
+		{
+			$myTable = 'admin_website';
+			$senarai = array('admin_website');
+			$medan = '`website_name`,`website_link`,`note`';
+		}
+		elseif ($action == 'admin_item') 
+		{
+			$myTable = 'admin_item';
+			$senarai = array('admin_item');
+			$medan = '`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
+		}
+		elseif ($action == 'admin_category') 
+		{
+			$myTable = 'admin_category';
+			$senarai = array('admin_category');
+			$medan = '`category_name`, `item_id`, `website_id`';
+
+		}
+		elseif ($action == 'rating')
+		{
+			$myTable = 'rating';
+			$senarai = array('rating');
+			$medan = '`user_id`, `website_id`, `rating`, `category_id`';
+		}
+
+		/*echo '<pre>action:'; print_r($action); echo '</pre>';
+		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
+		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
+		echo '<pre>medan:'; print_r($medan); echo '</pre>';*/
+
+		# bentuk tatasusunan
+		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
+		$senaraiData = $this->tanya->ubahPosmen($posmen);
+		# sql insert
+		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
+		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->log_sql($myTable, $medan, $senaraiData);
+		# semak data
+			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
+        # pergi papar kandungan
+		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
+		header('location: ' . URL . 'homeadmin');
+		//*/
 	}
 #==========================================================================================
 
