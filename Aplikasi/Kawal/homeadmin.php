@@ -65,6 +65,11 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo 'kite sekarang berada di kelas Homeadmin function website';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
+		# untuk add form
+		$this->papar->myTable = 'admin_website';
+		$this->papar->senarai = array('admin_website');
+		$this->papar->medan = '`website_name`,`website_link`,`note`';
+
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan('form_add_website', $noInclude = 1);
@@ -73,34 +78,50 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 	public function item($action)
 	{
 		# Set pemboleubah utama
-		echo 'kite sekarang berada di kelas Homeadmin function item';
+		//echo 'kite sekarang berada di kelas Homeadmin function item';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# untuk add form
+		$this->papar->myTable = 'admin_item';
+		$this->papar->senarai = array('admin_item');
+		$this->papar->medan = '`item_name`,`item_website	`,`link_item`,`link_picture`, `description`';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('pelawat');
+		$this->paparKandungan('form_add_item', $noInclude = 1);
 	}
 #==========================================================================================
 	public function category($action)
 	{
 		# Set pemboleubah utama
-		echo 'kite sekarang berada di kelas Homeadmin function category';
+		//echo 'kite sekarang berada di kelas Homeadmin function category';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# untuk add form
+		$this->papar->myTable = 'admin_category';
+		$this->papar->senarai = array('admin_category');
+		$this->papar->medan = '`category_name`, `item_id`, `website_id`';
+
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('pelawat');
+		$this->paparKandungan('form_add_category', $noInclude = 1);
 	}
 #==========================================================================================
 	public function rating($action)
 	{
 		# Set pemboleubah utama
-		echo 'kite sekarang berada di kelas Homeadmin function rating';
+		//echo 'kite sekarang berada di kelas Homeadmin function rating';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# untuk add form
+		$this->papar->myTable = 'rating';
+		$this->papar->senarai = array('rating');
+		$this->papar->medan = '`user_id`, `website_id`, `rating`, `category_id`';
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('pelawat');
+		$this->paparKandungan('form_add_rating', $noInclude = 1);
 	}
 #==========================================================================================
 
