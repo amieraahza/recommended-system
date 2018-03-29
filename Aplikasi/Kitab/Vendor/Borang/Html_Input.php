@@ -29,5 +29,61 @@ class Html_Input
 		return $input2;
 	}
 #------------------------------------------------------------------------------------------
+	public function updateInput($myTable,$kira, $namaMedan, $data)
+	{
+		# istihar pembolehubah 
+		$jenisMedan = isset($senarai['jenis_medan'])? $senarai['jenis_medan']: '';
+		$jenisData = isset($senarai['jenis_data'])? $senarai['jenis_data']: '';
+		//$labelDibawah = isset($senarai['label_dibawah'])? $senarai['label_dibawah']: '';
+		$labelDibawah = $data;
+		$name = 'name="' . $myTable . '[' . $namaMedan . ']"';
+		//$input = $name . ' value="' . $data . '"';
+		$inputText = $name;
+		$tabline = "\n\t\t\t";
+		$tabline2 = "\n\t\t";
+		$tabline4 = "\n\t\t\t\t";
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+
+		if(in_array($jenisMedan,array('textbox')))
+		{#kod utk input text 
+			$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<input type="text" ' . $name . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		elseif(in_array($namaMedan,array('website_id')))
+		{#kod utk input text 
+			$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		elseif(in_array($namaMedan,array('website_name', 'website_link', 'note')))
+		{#kod utk input text 
+			//$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<input type="text" ' . $name 
+				   . ' value="' . $data . '"'
+				   . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		return $input; # pulangkan nilai
+	}
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 #==========================================================================================
 }

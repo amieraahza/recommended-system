@@ -24,7 +24,7 @@
 		$cariBatch = $namaPegawai = 0;
 		foreach ( $row[$kira] as $key=>$data ) 
 		{	
-			$html->paparURL($key, $data, $myTable, $cariBatch, $namaPegawai);
+			$html->paparURL($key, $data, $this->myTable, $cariBatch, $namaPegawai);
 		} 
 		?></tr></tbody>
 	<?php

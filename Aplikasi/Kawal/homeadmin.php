@@ -164,14 +164,30 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		
 	}
 #==========================================================================================
-	public function updateform($action = NULL)
+	public function updateform($action = NULL, $cariID)
 	{
 		# Set pemboleubah utama
-		echo 'kite sekarang berada di kelas Homeadmin function updateform';
+		//echo 'kite sekarang berada di kelas Homeadmin function updateform';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);	
+		$this->papar->cariID = $cariID;
+		list($this->papar->myTable, $senarai, $medan)= $this->tanya->updateTable($action);
+		$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'website_id','apa'=>$cariID);
+		/*echo '<pre>action:'; print_r($action); echo '</pre>';
+		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
+		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
+		echo '<pre>medan:'; print_r($medan); echo '</pre>';//*/
+
+		# untuk list data dari myTable
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);	
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('form_update_website', $noInclude = 1);
 	}
 #==========================================================================================
 	public function deleteform($action = NULL)
@@ -185,5 +201,43 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 
 		
 	}
+#==========================================================================================
+	public function updateSave($action, $dataID)
+	{
+		# Set pemboleubah utama
+		/*echo 'kite sekarang berada di kelas Homeadmin function updateSave';
+		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';//*/
+
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
+		$medanID = 'website_id';
+		$senaraiJadual = array($myTable);
+
+		# ubahsuai $posmen
+		$posmen = array();
+		$posmen = $this->tanya->semakPost2($_POST, $myTable, $senaraiJadual, 
+			$medanID, $dataID);
+		//$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}# tamat ulang table//*/
+		
+		# pergi papar kandungan
+		$link = 'homeadmin/updateform/' . $myTable . '/';
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		header('location: ' . URL . $link . $dataID); //*/
+
+	}
+#==========================================================================================
+#==========================================================================================
+#==========================================================================================
+#==========================================================================================
+#==========================================================================================
 #==========================================================================================
 }

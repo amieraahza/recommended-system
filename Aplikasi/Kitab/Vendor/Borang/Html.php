@@ -356,6 +356,15 @@ class Html
 		{
 			?><td><?php echo nl2br($data) ?></td><?php
 		}
+		elseif(in_array($key, array('website_id')))
+		{
+			$k0 = URL . 'homeadmin/updateform/' . $myTable . '/' . $data;
+			$p0 = '<a target="_blank" href="' . $k0 . '">'
+				. $this->iconFA(1) . '</a>&nbsp;';
+
+			?><td><?php echo $p0 . $data
+			?></td><?php
+		}
 		else
 		{
 			?><td><?php echo $data ?></td><?php
