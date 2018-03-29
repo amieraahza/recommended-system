@@ -127,36 +127,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		if ($action == 'admin_website') 
-		{
-			$myTable = 'admin_website';
-			$senarai = array('admin_website');
-			$medan = '`website_name`,`website_link`,`note`';
-		}
-		elseif ($action == 'admin_item') 
-		{
-			$myTable = 'admin_item';
-			$senarai = array('admin_item');
-			$medan = '`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
-		}
-		elseif ($action == 'admin_category') 
-		{
-			$myTable = 'admin_category';
-			$senarai = array('admin_category');
-			$medan = '`category_name`, `item_id`, `website_id`';
-
-		}
-		elseif ($action == 'rating')
-		{
-			$myTable = 'rating';
-			$senarai = array('rating');
-			$medan = '`user_id`, `website_id`, `rating`, `category_id`';
-		}
-
-		/*echo '<pre>action:'; print_r($action); echo '</pre>';
-		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
-		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
-		echo '<pre>medan:'; print_r($medan); echo '</pre>';*/
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
 
 		# bentuk tatasusunan
 		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
@@ -182,37 +153,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		if ($action == 'admin_website') 
-		{
-			$myTable = 'admin_website';
-			$senarai = array('admin_website');
-			$medan = '`website_name`,`website_link`,`note`';
-		}
-		elseif ($action == 'admin_item') 
-		{
-			$myTable = 'admin_item';
-			$senarai = array('admin_item');
-			$medan = '`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
-		}
-		elseif ($action == 'admin_category') 
-		{
-			$myTable = 'admin_category';
-			$senarai = array('admin_category');
-			$medan = '`category_name`, `item_id`, `website_id`';
-
-		}
-		elseif ($action == 'rating')
-		{
-			$myTable = 'rating';
-			$senarai = array('rating');
-			$medan = '`user_id`, `website_id`, `rating`, `category_id`';
-		}
-
-		/*echo '<pre>action:'; print_r($action); echo '</pre>';
-		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
-		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
-		echo '<pre>medan:'; print_r($medan); echo '</pre>';*/
-
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
 		# bentuk tatasusunan
 		
 	}
@@ -224,38 +165,8 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		if ($action == 'admin_website') 
-		{
-			$myTable = 'admin_website';
-			$senarai = array('admin_website');
-			$medan = '`website_name`,`website_link`,`note`';
-		}
-		elseif ($action == 'admin_item') 
-		{
-			$myTable = 'admin_item';
-			$senarai = array('admin_item');
-			$medan = '`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
-		}
-		elseif ($action == 'admin_category') 
-		{
-			$myTable = 'admin_category';
-			$senarai = array('admin_category');
-			$medan = '`category_name`, `item_id`, `website_id`';
-
-		}
-		elseif ($action == 'rating')
-		{
-			$myTable = 'rating';
-			$senarai = array('rating');
-			$medan = '`user_id`, `website_id`, `rating`, `category_id`';
-		}
-
-		/*echo '<pre>action:'; print_r($action); echo '</pre>';
-		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
-		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
-		echo '<pre>medan:'; print_r($medan); echo '</pre>';*/
-
-		# bentuk tatasusunan
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
+		
 		
 	}
 #==========================================================================================
@@ -266,41 +177,9 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		if ($action == 'admin_website') 
-		{
-			$myTable = 'admin_website';
-			$senarai = array('admin_website');
-			$medan = '`website_name`,`website_link`,`note`';
-		}
-		elseif ($action == 'admin_item') 
-		{
-			$myTable = 'admin_item';
-			$senarai = array('admin_item');
-			$medan = '`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
-		}
-		elseif ($action == 'admin_category') 
-		{
-			$myTable = 'admin_category';
-			$senarai = array('admin_category');
-			$medan = '`category_name`, `item_id`, `website_id`';
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
 
-		}
-		elseif ($action == 'rating')
-		{
-			$myTable = 'rating';
-			$senarai = array('rating');
-			$medan = '`user_id`, `website_id`, `rating`, `category_id`';
-		}
-
-		/*echo '<pre>action:'; print_r($action); echo '</pre>';
-		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
-		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
-		echo '<pre>medan:'; print_r($medan); echo '</pre>';*/
-
-		# bentuk tatasusunan
 		
 	}
 #==========================================================================================
-}
-
 }
