@@ -165,9 +165,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# Set pemboleubah utama
-		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
-		
-		
+		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);	
 	}
 #==========================================================================================
 	public function deleteform($action = NULL)
