@@ -63,15 +63,21 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		//echo 'kite sekarang berada di kelas Homeadmin function website';
-		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		//echo '<pre>action:'; print_r($action); echo '</pre>';
 
 		# untuk add form
 		$this->papar->myTable = 'admin_website';
 		$this->papar->medan = array('website_name','website_link','note');
+		$medan = '`website_id`,`website_name`,`website_link`,`note`';
+		# untuk list data dari myTable
+			$this->papar->senarai['website'] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, NULL, NULL);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('form_add_website', $noInclude = 1);
+		$this->paparKandungan('form_list_website', $noInclude = 1);
 	}
 #==========================================================================================
 	public function item($action)

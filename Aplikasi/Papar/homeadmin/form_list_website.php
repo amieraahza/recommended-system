@@ -51,8 +51,31 @@
   <div class="row-fluid">
     <div class="span6">
       <div class="widget-box">
+        <div class="widget-title">
+          <h5>Websites List</h5>
+        </div><!-- tutup class widget title -->
+        <div class="widget-content nopadding">
+          <?php 
+/*echo 'namatable:' . $this->myTable;
+echo '<pre>namamedan:'; print_r($this->medan); echo '</pre>';
+echo '<pre>$this->senarai:'; print_r($this->senarai); echo '</pre>';*/
+$classTable[] = "table table-bordered table-striped";
+$classTable[] = "table table-bordered table-striped with-check";
+$classTable[] = "table table-bordered data-table";
+?>
+<!-- mula - baca jadual berulang ///////////////////////////////////////////////////////////////////////// -->
+<?php 
+if (isset($this->senarai) )
+  include 'papar_jadual0.php'; 
+?>
+<!-- tamat - baca jadual berulang //////////////////////////////////////////////////////////////////////// -->
+        </div><!-- tutup class widget-content noppading -->
+      </div><!-- tutup class widget-box -->
+    </div><!-- tutup class span6 -->
+    <div class="span6">
+      <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Website Info</h5>
+          <h5>Add Website</h5>
         </div>
         <div class="widget-content nopadding">
         <form class="form-horizontal" method="POST" action="<?php 
