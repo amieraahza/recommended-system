@@ -356,7 +356,7 @@ class Html
 		{
 			?><td><?php echo nl2br($data) ?></td><?php
 		}
-		elseif(in_array($key, array('website_id')))
+		elseif(in_array($key, array('website_id', 'item_id')))
 		{
 			$k0 = URL . 'homeadmin/updateform/' . $myTable . '/' . $data;
 			$p0 = '<a target="_blank" href="' . $k0 . '">'

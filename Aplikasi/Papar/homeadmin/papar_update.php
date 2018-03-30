@@ -36,6 +36,7 @@ else # $this->carian=='ada' - mula
   </form>
   <hr><?php 
   endif;
-} # $this->carian=='ada' - tamat 
+}
+# $this->carian=='ada' - tamat 
 //*/
 ?>
