@@ -11,7 +11,7 @@ else # $this->carian=='ada' - mula
     for ($kira=0; $kira < count($row); $kira++)
     {# print the data row // <button type="button" class="btn btn-info">Info</button>
     #----------------------------------------------------------------------------
-    foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
+foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
       ?><div class="form-group">
       <label for="input<?php echo $key 
       ?>" class="col-sm-2 control-label"><?php echo $key ?></label>
@@ -36,7 +36,6 @@ else # $this->carian=='ada' - mula
   </form>
   <hr><?php 
   endif;
-}
-# $this->carian=='ada' - tamat 
+} # $this->carian=='ada' - tamat 
 //*/
 ?>

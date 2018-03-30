@@ -79,7 +79,7 @@ $classTable[] = "table table-bordered data-table";
         </div>
         <div class="widget-content nopadding">
 
-        <?php include 'papar_update.php' ?>
+         <?php include 'papar_update.php' ?>
       <!-- butang action -->
 
       </div><!-- class="widget-content nopadding" -->

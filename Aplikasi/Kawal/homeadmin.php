@@ -181,7 +181,6 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		$this->papar->cariID = $cariID;
 		list($this->papar->myTable, $senarai, $medan)= $this->tanya->updateTable($action);
 		$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'website_id','apa'=>$cariID);
-		$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'item_id','apa'=>$cariID);
 		/*echo '<pre>action:'; print_r($action); echo '</pre>';
 		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
 		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
@@ -196,7 +195,6 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan('form_update_website', $noInclude = 1);
-		$this->paparKandungan('form_update_item', $noInclude = 1);
 	}
 #==========================================================================================
 	public function deleteform($action = NULL)

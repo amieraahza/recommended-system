@@ -98,7 +98,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function list($action)
 	{
-				if ($action == 'admin_website') 
+		if ($action == 'admin_website') 
 		{
 			$myTable = 'admin_website';
 			$senarai = array('admin_website');

@@ -57,8 +57,9 @@ class Html_Input
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($namaMedan,array('website_id', 'item_id')))
-		{#kod utk i			$data = null;
+		elseif(in_array($namaMedan,array('website_id')))
+		{#kod utk input text 
+			$data = null;
 			$input = '<div class="input-group input-group">' . $tabline
 				   //. '<span class="input-group-addon"></span>' . $tabline
 				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
@@ -66,18 +67,6 @@ class Html_Input
 				   . '';
 		}
 		elseif(in_array($namaMedan,array('website_name', 'website_link', 'note')))
-		{#kod utk input text 
-			//$data = null;
-			$input = '<div class="input-group input-group">' . $tabline
-				   //. '<span class="input-group-addon"></span>' . $tabline
-				   . '<input type="text" ' . $name 
-				   . ' value="' . $data . '"'
-				   . ' class="form-control">' . $tabline
-				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
-				   . $tabline2 . '</div>'
-				   . '';
-		}
-		elseif(in_array($namaMedan,array('item_name','item_website', 'link_item', 'link_picture', 'description')))
 		{#kod utk input text 
 			//$data = null;
 			$input = '<div class="input-group input-group">' . $tabline
