@@ -111,11 +111,17 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		# untuk add form
 		$this->papar->myTable = 'admin_category';
 		$this->papar->medan = array('category_name', 'item_id', 'website_id');
+		$medan = '`category_id`,`category_name`,`item_id`, `website_id`';
 
+		# untuk list data dari myTable
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);	
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('form_add_category', $noInclude = 1);
+		$this->paparKandungan('form_list_category', $noInclude = 1);
 	}
 #==========================================================================================
 	public function rating($action)
@@ -127,10 +133,18 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		# untuk add form
 		$this->papar->myTable = 'rating';
 		$this->papar->medan = array('user_id', 'website_id', 'rating', 'category_id');
+		$medan = '`rating_id`,`user_id`,`website_id`,`rating`,`category_id`';
+		
+		# untuk list data dari myTable
+		$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);	
+
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('form_add_rating', $noInclude = 1);
+		$this->paparKandungan('form_list_rating', $noInclude = 1);
 	}
 #==========================================================================================
 	public function addform($action = NULL)
