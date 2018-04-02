@@ -2,7 +2,7 @@
 namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 
 //include_once __DIR__ . '/vendor/autoload.php';
-include_once  __DIR__ . '/google-api-php-client-2.2.1/vendor/autoload.php';
+include_once '../../../../google-api-php-client-2.2.1/vendor/autoload.php';
 
 /**
  * Retrieves a simple set of google results for a given plant id.
