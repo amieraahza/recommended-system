@@ -1,5 +1,6 @@
+
 <?php 
-if(!isset($this->senarai[$this->myTable][0]['website_id']))
+if(!isset($this->senarai[$this->myTable][0][$this->cariMedan]))
   echo 'data kosong juga<br>';
 else # $this->carian=='ada' - mula 
 {   $mencari2 = URL . 'homeadmin/updateSave/' . $this->myTable . '/' . $this->cariID; ?>
@@ -24,7 +25,7 @@ foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
     #----------------------------------------------------------------------------
   }# tamat ulang $row
   echo "\n\t\t";
-  if(isset($this->senarai[$this->myTable][0]['website_id'])):
+  if(isset($this->senarai[$this->myTable][0][$this->cariMedan])):
   ?><div class="form-group">
       <label for="inputSubmit" class="col-sm-3 control-label"><?=$this->myTable?></label>
       <div class="col-sm-6">

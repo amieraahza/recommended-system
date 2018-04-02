@@ -44,7 +44,7 @@
 <div id="content-header">
   <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
   <a href="#" class="tip-bottom">Form</a> <a href="#" class="current">Item</a> </div>
-  <h1>Item</h1>
+  <h1>Item Update</h1>
 </div>
 <div class="container-fluid">
   <hr>
@@ -75,7 +75,7 @@ $classTable[] = "table table-bordered data-table";
     <div class="span6">
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Item Info</h5>
+          <h5>Item Update</h5>
         </div>
         <div class="widget-content nopadding">
 

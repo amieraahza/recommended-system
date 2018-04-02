@@ -132,6 +132,49 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $senarai, $medan);
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function updateForm($action)
+	{
+		if ($action == 'admin_website') 
+		{
+			$myTable = 'admin_website';
+			$senarai = array('admin_website');
+			$medan = '`website_id`,`website_name`,`website_link`,`note`';
+			$cariMedan = 'website_id';
+			$updateLink = 'form_update_website';
+		}
+		elseif ($action == 'admin_item') 
+		{
+			$myTable = 'admin_item';
+			$senarai = array('admin_item');
+			$medan = '`item_id`,`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
+			$cariMedan = 'item_id';
+			$updateLink = 'form_update_item';
+		}
+		elseif ($action == 'admin_category') 
+		{
+			$myTable = 'admin_category';
+			$senarai = array('admin_category');
+			$medan = '`category_id`,`category_name`, `item_id`, `website_id`';
+			$cariMedan = 'category_id';
+			$updateLink = 'form_update_category';
+		}
+		elseif ($action == 'rating')
+		{
+			$myTable = 'rating';
+			$senarai = array('rating');
+			$medan = '`rating_id`,`user_id`, `website_id`, `rating`, `category_id`';
+			$cariMedan = 'rating_id';
+			$updateLink = 'form_update_rating';
+		}
+
+		/*echo '<pre>action:'; print_r($action); echo '</pre>';
+		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
+		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
+		echo '<pre>medan:'; print_r($medan); echo '</pre>';//*/
+
+		return array($myTable, $senarai, $medan, $cariMedan, $updateLink);
+	}
+#---------------------------------------------------------------------------------------------------#
 	public function updateTable($action)
 	{
 		if ($action == 'admin_website') 
