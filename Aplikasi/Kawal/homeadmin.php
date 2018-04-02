@@ -232,8 +232,9 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		/*echo 'kite sekarang berada di kelas Homeadmin function updateSave';
 		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';//*/
 
-		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
-		$medanID = 'website_id';
+		list($myTable, $senarai, $medan, 
+			$medanID, $updateLink) 
+			= $this->tanya->updateForm($action);
 		$senaraiJadual = array($myTable);
 
 		# ubahsuai $posmen

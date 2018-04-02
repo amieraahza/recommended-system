@@ -91,6 +91,31 @@ class Html_Input
 				   . $tabline2 . '</div>'
 				   . '';
 		}
+		elseif(in_array($namaMedan,array('category_name', 'item_id', 'website_id')))
+		{#senarai medan untuk table admin_item
+			//$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<input type="text" ' . $name 
+				   . ' value="' . $data . '"'
+				   . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		elseif(in_array($namaMedan,array('user_id', 'website_id', 'rating', 'category_id')))
+		{#senarai medan untuk table admin_item
+			//$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<input type="text" ' . $name 
+				   . ' value="' . $data . '"'
+				   . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		
 		return $input; # pulangkan nilai
 	}
 #------------------------------------------------------------------------------------------
