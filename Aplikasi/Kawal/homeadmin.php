@@ -72,7 +72,7 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		# untuk list data dari myTable
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
 			'medan'=>'delete_status','apa'=>'0');
-			$this->papar->senarai['website'] = $this->tanya->
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
 				$this->papar->myTable, $medan, $carian, NULL);
@@ -92,12 +92,14 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		$this->papar->myTable = 'admin_item';
 		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
 		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
-
+		
 		# untuk list data dari myTable
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status','apa'=>'0');
 			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
-				$this->papar->myTable, $medan, $carian, NULL);	
+				$this->papar->myTable, $medan, $carian, NULL);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -116,10 +118,12 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		$medan = '`category_id`,`category_name`,`item_id`, `website_id`';
 
 		# untuk list data dari myTable
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status','apa'=>'0');
 			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
-				$this->papar->myTable, $medan, $carian, NULL);	
+				$this->papar->myTable, $medan, $carian, NULL);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
@@ -138,11 +142,12 @@ class Homeadmin extends \Aplikasi\Kitab\Kawal
 		$medan = '`rating_id`,`user_id`,`website_id`,`rating`,`category_id`';
 		
 		# untuk list data dari myTable
-		$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status','apa'=>'0');
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
-				$this->papar->myTable, $medan, $carian, NULL);	
-
+				$this->papar->myTable, $medan, $carian, NULL);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
