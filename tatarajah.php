@@ -11,6 +11,7 @@ require KITAB . '/Fungsi.php';
 # Sentiasa menyediakan garis condong di belakang (/) pada hujung jalan
 define('SPORT', ':' . $_SERVER['SERVER_PORT']);
 define('URL', dirname('http://' . $_SERVER['SERVER_NAME'] . SPORT . $_SERVER['PHP_SELF']) . '/');
+define('SERVER_NAME', $_SERVER['SERVER_NAME'] . SPORT . '/');
 define('Tajuk_Muka_Surat', '***');
 
 # setkan jquery, bootstrap dan font awesome sama ada local atau cdn
