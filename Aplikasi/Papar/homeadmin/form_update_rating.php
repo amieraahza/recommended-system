@@ -44,8 +44,8 @@
 <div id="content">
 <div id="content-header">
   <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-  <a href="#" class="tip-bottom">Form</a> <a href="#" class="current">Website</a> </div>
-  <h1>Website</h1>
+  <a href="#" class="tip-bottom">Form</a> <a href="#" class="current">Rating</a> </div>
+  <h1>Rating</h1>
 </div>
 <div class="container-fluid">
   <hr>
@@ -53,7 +53,7 @@
     <div class="span6">
       <div class="widget-box">
         <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-          <h5>Website Info</h5>
+          <h5>Rating Info</h5>
         </div>
         <div class="widget-content nopadding">
         <form class="form-horizontal" method="POST" action="<?php 

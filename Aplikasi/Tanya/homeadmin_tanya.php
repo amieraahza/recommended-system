@@ -37,6 +37,14 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 		return $posmen;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakPost3($post, $myTable, $senaraiJadual, $medanID, $dataID)
+	{
+		$posmen = array();
+		$posmen[$myTable]['delete_status'] = '1';
+		$posmen[$senaraiJadual[0]][$medanID] = $dataID;
+
+		return $posmen;
+	}
 #---------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------#
 	public function ubahPosmen($posmen)
@@ -141,6 +149,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 			$medan = '`website_id`,`website_name`,`website_link`,`note`';
 			$cariMedan = 'website_id';
 			$updateLink = 'form_update_website';
+			$deleteLink = 'website/list/';
 		}
 		elseif ($action == 'admin_item') 
 		{
@@ -149,6 +158,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 			$medan = '`item_id`,`item_name`,`item_website`, `link_item`, `link_picture`, `description`';
 			$cariMedan = 'item_id';
 			$updateLink = 'form_update_item';
+			$deleteLink = 'item/list/';
 		}
 		elseif ($action == 'admin_category') 
 		{
@@ -157,6 +167,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 			$medan = '`category_id`,`category_name`, `item_id`, `website_id`';
 			$cariMedan = 'category_id';
 			$updateLink = 'form_update_category';
+			$deleteLink = 'category/list/';
 		}
 		elseif ($action == 'rating')
 		{
@@ -165,6 +176,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 			$medan = '`rating_id`,`user_id`, `website_id`, `rating`, `category_id`';
 			$cariMedan = 'rating_id';
 			$updateLink = 'form_update_rating';
+			$deleteLink = 'rating/list/';
 		}
 
 		/*echo '<pre>action:'; print_r($action); echo '</pre>';
@@ -172,7 +184,7 @@ class Homeadmin_Tanya extends \Aplikasi\Kitab\Tanya
 		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
 		echo '<pre>medan:'; print_r($medan); echo '</pre>';//*/
 
-		return array($myTable, $senarai, $medan, $cariMedan, $updateLink);
+		return array($myTable, $senarai, $medan, $cariMedan, $updateLink, $deleteLink);
 	}
 #---------------------------------------------------------------------------------------------------#
 	public function updateTable($action)

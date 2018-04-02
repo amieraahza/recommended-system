@@ -3,7 +3,8 @@
 if(!isset($this->senarai[$this->myTable][0][$this->cariMedan]))
   echo 'data kosong juga<br>';
 else # $this->carian=='ada' - mula 
-{   $mencari2 = URL . 'homeadmin/updateSave/' . $this->myTable . '/' . $this->cariID; ?>
+{   $mencari2 = URL . 'homeadmin/updateSave/' . $this->myTable . '/' . $this->cariID; 
+  //echo $mencari2; ?>
   <form method="POST" action="<?php echo $mencari2 ?>"
   class="form-horizontal"><?php
   $html = new Aplikasi\Kitab\Html_Input;
@@ -27,10 +28,11 @@ foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
   echo "\n\t\t";
   if(isset($this->senarai[$this->myTable][0][$this->cariMedan])):
   ?><div class="form-group">
-      <label for="inputSubmit" class="col-sm-3 control-label"><?=$this->myTable?></label>
+      <label for="inputSubmit" class="col-sm-3 control-label"><?php echo $this->myTable ?></label>
       <div class="col-sm-6">
-        <input type="hidden" name="jadual" value="<?=$this->myTable?>">
-        <input type="submit" name="Simpan" value="Simpan" class="btn btn-primary btn-large">
+        <input type="hidden" name="jadual" value="<?php echo $this->myTable ?>">
+        <input type="submit" name="butang" value="Simpan" class="btn btn-primary btn-large">
+        <input type="submit" name="butang" value="Buang" class="btn btn-danger btn-large">
         <?php //echo $mencari2 ?>
       </div>
     </div>  
