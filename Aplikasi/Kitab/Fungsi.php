@@ -238,6 +238,7 @@ function bersih($papar)
 	//$papar = mysql_real_escape_string($papar);
 	# buang ruang kosong (atau aksara lain) dari mula & akhir 
 	$papar = trim($papar);
+	$papar = htmlspecialchars($papar, ENT_QUOTES);
 
 	return $papar;
 }

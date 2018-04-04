@@ -7,7 +7,7 @@ define('KITAB', 'Aplikasi/Kitab');
 
 # Fungsi Global
 require KITAB . '/Fungsi.php';
-require '../../belajar/google-api-php-client-2.2.1/vendor/autoload.php'; # Tambah api google
+require '../belajar/googleAPI/google-api-php-client-2.2.1/vendor/autoload.php'; # Tambah api google
 
 # Sentiasa menyediakan garis condong di belakang (/) pada hujung jalan
 define('SPORT', ':' . $_SERVER['SERVER_PORT']);
