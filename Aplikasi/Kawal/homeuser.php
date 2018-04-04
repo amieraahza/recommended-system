@@ -39,14 +39,44 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		echo '</pre>|';//*/
 	}
 #==========================================================================================
+#-------------------------------------------------------------------------------------------
 	public function search()
 	{
 		# Set pemboleubah utama
 		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 		# https://stackoverflow.com/questions/41592249/how-to-use-php-client-for-google-custom-search-engine
 
-		$cariApa = (isset($_POST['find'])) ? $_GET['find'] : 'samsung'; # cari barang apa 
+		$searchTerm = (isset($_POST['search'])) ? $_POST['search'] : 'samsung'; # cari barang apa 
+		$service = new \Aplikasi\Kitab\GoogleResults();
+		$items = $service->getSearchResults($searchTerm);
+		echo '<pre>' . $searchTerm . ' | $results=><hr>'; print_r($items); echo '</pre>';
+		/*
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		https://stackoverflow.com/questions/30284721/adding-google-api-client-to-codeigniter
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		//*/
 
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan('pelawat');
+	}
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+	function logout()
+	{
+		\Aplikasi\Kitab\Sesi::init();
+		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
+		\Aplikasi\Kitab\Sesi::destroy();
+		//echo '<pre>selepas:'; print_r($_SESSION) . '</pre>';
+		header('location: ' . URL);
+		//exit;
+	}
+#==========================================================================================
+}
+
+/*
 		//include_once __DIR__ . '/vendor/autoload.php';
 		//include_once  __DIR__ . '/google-api-php-client-2.2.1/vendor/autoload.php';
 
@@ -98,23 +128,21 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		    [og:type] => website
 		    [og:url] => https://shopee.com.my/SanDisk-100MB-s-ULTRA-A1-Class-10-Micro-SD-Card-128GB-64GB-32GB-16GB-i.180984.62503407
 		    [og:image] => https://cfshopeecommy-a.akamaihd.net/file/b313d8839a356f2efadb8cf63bf7bb9e
-		    [og:description] => * NEW UPGRADED VERSION  * A1 RATED FOR FASTER MOBILE APP PERFOMANCE (98MB/s to 100MB/s) * 16GB-32GB :Up to 98MB/s read speed  * 64GB-128GB :Up to 100MB/s read speed * Original stock from SanDisk Malaysia distributor * Genuine set, come with adapter, with 10 years warranty * One to one swap 10 years warranty * All sealed in retail pack (NOT BULK PACK) * Capture higher quality photos and capture full HD video  * Capacity up to 128GB, can shoot, carry and complete preservation  * Class 10 video rating for full HD video capture  * Increase capacity for ANDROID devices  * Play faster app performance to capture better photos  Capture higher quality photos and capture full HD video  Use the Extreme high speed mobile MicroSDXC UHS-I memory card with Class 10 video rating, can give full play to your mobile devices and camera performance. This versatile microSD memory card is equipped with an SD ™ card adapter and is ideal for applications that support SD memory card devices such as cameras, camco
+		    [og:description] => * NEW UPGRADED VERSION  * A1 RATED FOR FASTER MOBILE APP PERFOMANCE (98MB/s to 100MB/s) 
+			* 16GB-32GB :Up to 98MB/s read speed  * 64GB-128GB :Up to 100MB/s read speed 
+			* Original stock from SanDisk Malaysia distributor 
+			* Genuine set, come with adapter, with 10 years warranty 
+			* One to one swap 10 years warranty * All sealed in retail pack (NOT BULK PACK) 
+			* Capture higher quality photos and capture full HD video  
+			* Capacity up to 128GB, can shoot, carry and complete preservation  
+			* Class 10 video rating for full HD video capture  * Increase capacity for ANDROID devices  
+			* Play faster app performance to capture better photos  Capture higher quality photos and capture full HD video  
+			Use the Extreme high speed mobile MicroSDXC UHS-I memory card with Class 10 video rating, can give full play to 
+			your mobile devices and camera performance. This versatile microSD memory card is equipped with an SD ™ card adapter 
+			and is ideal for applications that support SD memory card devices such as cameras, camco
 		)
 		//*/
 
-		# Pergi papar kandungan
-		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('pelawat');
-	}
+
+//*/
 #-------------------------------------------------------------------------------------------
-	function logout()
-	{
-		\Aplikasi\Kitab\Sesi::init();
-		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
-		\Aplikasi\Kitab\Sesi::destroy();
-		//echo '<pre>selepas:'; print_r($_SESSION) . '</pre>';
-		header('location: ' . URL);
-		//exit;
-	}
-#==========================================================================================
-}

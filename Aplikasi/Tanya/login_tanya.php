@@ -7,7 +7,14 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-	
+#------------------------------------------------------------------------------------------------------------------#
+	public function semakPembolehubah(&$senarai)
+	{
+		echo '<pre>' . $senarai . ':<br>';
+		print_r($senarai);
+		echo '</pre>|';//*/
+	}
+#------------------------------------------------------------------------------------------------------------------#
 	function registerid($medan = 'namaawal,namaakhir,phone_number,email,password1,password2', $jadual = 'biodata')
 	{
 		$namaawal = $_POST[$jadual]['namaawal'];
@@ -36,37 +43,37 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 					foreach ($value2 as $kekunci => $papar)
 						$posmen[$myTable][0][$kekunci] = bersih($papar);
 						//echo "$kekunci";
-		
+
 		# pulangkan pemboleubah
 		return $posmen;		
 	}
 	
-	public function ubahPosmen($posmen)
-	{
-		$password1 = $posmen['biodata'][0]['password1'];
-		$password2 = $posmen['biodata'][0]['password2'];
+	public function ubahPosmen($posmen, $myTable)
+	{	//$this->semakPembolehubah($posmen);
+		# set pemboleubah
+		$password1 = $posmen[$myTable][0]['password1'];
+		$password2 = $posmen[$myTable][0]['password2'];
 		$password = ($password1 == $password2) ? $password1: NULL;
 		$password = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $password);
 		$level = 'user';
 
+		$cantum = '';
 		$senaraiData = array();
 		foreach ($posmen as $key => $value1):
-			foreach ($value1 as $key2 => $dataS):
-				$senaraiData[] = "('" 
-					. ($dataS['namaawal']) . "', '" 
-					. ($dataS['namaakhir']) . "', '" 
-					. ($dataS['phone_number']) . "', '" 
-					. ($dataS['email']) . "', '" 
-					. ($password) . "', '" 
-					. ($level) . "', '" 
-					. "')";
+			foreach ($value1[0] as $key2 => $dataS): //echo $key2 . '<br>';
+				$cantum .= ($key2 == 'password1') ? ($password) . "', '"
+					:(	($key2 == 'password2') ? ($level) . "', '"
+					: ($dataS) . "', '");
 			endforeach;
 		endforeach;
 
+		$senaraiData[0] = "('" . $cantum . "')";
 		$senaraiData[0] = substr($senaraiData[0], 0, -5) . ')';
-		# pulangkan pemboleubah
-		return $senaraiData;
+		//$this->semakPembolehubah($senaraiData);
+
+		return $senaraiData; # pulangkan pemboleubah
 	}
+
 	function dapatid($nama)
 	{
 		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>| ';
