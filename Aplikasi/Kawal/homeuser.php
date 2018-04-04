@@ -57,10 +57,10 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		$client = new GoogleResults();
 		$client->setApplicationName("My_App");
-		$client->setDeveloperKey($GCSE_API_KEY);
+		$client->setDeveloperKey(GCSE_API_KEY);
 		$service = new Google_Service_Customsearch($client);
 		//$optParams = array("cx"=>self::GCSE_SEARCH_ENGINE_ID);    
-		$optParams = array("cx"=>$GCSE_SEARCH_ENGINE_ID);    
+		$optParams = array("cx"=>GCSE_SEARCH_ENGINE_ID);    
 		$results = $service->cse->listCse($cariApa, $optParams);
 
 		//echo '<pre>$results=>'; print_r($results); echo '</pre>';
