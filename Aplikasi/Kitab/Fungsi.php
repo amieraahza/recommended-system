@@ -214,6 +214,24 @@ function huruf($jenis , $papar)
 	return $papar;
 }
 
+function tukarHuruf($asal)
+{
+	$asal = str_replace('_','&nbsp;', $asal);
+	$asal = huruf('kecil', $asal);
+	$asal = huruf('Besar_Depan', $asal);
+	//$asal = preg_replace('/[^a-zA-Z0-9-]/', '&nbsp;', $asal;
+	//$asal = str_replace(array(' ', '<', '>', '&', '{', '}', '*'), array('&nbsp;'), $asal);
+
+	return $asal;
+}
+
+function kodHtml($papar)
+{
+	$papar = htmlentities($papar);
+
+	return $papar;
+}
+
 function bersih($papar) 
 {
 	# lepas lari aksara khas dalam SQL
@@ -247,17 +265,6 @@ function bersihGET_nama($papar)
 	    
     //return $papar;
     return $paparHTML;
-}
-
-function tukarHuruf($asal)
-{
-	$asal = str_replace('_','&nbsp;', $asal);
-	$asal = huruf('kecil', $asal);
-	$asal = huruf('Besar_Depan', $asal);
-	//$asal = preg_replace('/[^a-zA-Z0-9-]/', '&nbsp;', $asal;
-	//$asal = str_replace(array(' ', '<', '>', '&', '{', '}', '*'), array('&nbsp;'), $asal);
-
-	return $asal;
 }
 
 function gambar_latarbelakang($lokasi)
@@ -358,7 +365,7 @@ function GetContents($dir,$files=array())
 	//if(!($res=opendir($dir))): exit("folder $dir tidak wujud!!!");
 	if(!($res=@opendir($dir))): exit(\Aplikasi\Kitab\Peta::folderPaparTidakWujud());
 	else:
-		while(($file=readdir($res))==TRUE) 
+		while(($file=readdir($res))==TRUE)
 		if($file!="." && $file!="..")
 			if(is_dir("$dir/$file")) 
 				$files=GetContents("$dir/$file",$files);
