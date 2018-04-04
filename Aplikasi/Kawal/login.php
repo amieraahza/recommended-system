@@ -47,12 +47,12 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$myTable = 'biodata';
-		$senarai = array('biodata');
+		$senarai = array($myTable);
 		$medan = '`namaawal`,`namaakhir`,`phone_number`,`email`,`password`,`level`';
 
 		# bentuk tatasusunan
 		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
-		$senaraiData = $this->tanya->ubahPosmen($posmen);
+		$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
 		# sql insert
 		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
@@ -61,12 +61,12 @@ class Login extends \Aplikasi\Kitab\Kawal
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
-        # pergi papar kandungan
+		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
 		header('location: ' . URL . '');
 		//*/
 	}
-	
+
 	function semakid()
 	{
 		# debug $_POST
@@ -77,6 +77,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->tanya->semakid();
 		//*/
 	}
+
 	function salah()
 	{
 		# debug
@@ -116,7 +117,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>password->'; print_r($password); echo '</pre>';
 
 		# semak database
-			$myTable = "biodata";
+			$myTable = 'biodata';
 			$medan = 'namaawal, namaakhir, phone_number, email, password, level';
 			$carian[] = array('fix'=>'like', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
