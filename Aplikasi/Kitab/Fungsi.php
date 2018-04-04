@@ -214,10 +214,21 @@ function huruf($jenis , $papar)
 	return $papar;
 }
 
+function tukarHuruf($asal)
+{
+	$asal = str_replace('_','&nbsp;', $asal);
+	$asal = huruf('kecil', $asal);
+	$asal = huruf('Besar_Depan', $asal);
+	//$asal = preg_replace('/[^a-zA-Z0-9-]/', '&nbsp;', $asal;
+	//$asal = str_replace(array(' ', '<', '>', '&', '{', '}', '*'), array('&nbsp;'), $asal);
+
+	return $asal;
+}
+
 function kodHtml($papar)
 {
 	$papar = htmlentities($papar);
-	
+
 	return $papar;
 }
 
@@ -254,17 +265,6 @@ function bersihGET_nama($papar)
 	    
     //return $papar;
     return $paparHTML;
-}
-
-function tukarHuruf($asal)
-{
-	$asal = str_replace('_','&nbsp;', $asal);
-	$asal = huruf('kecil', $asal);
-	$asal = huruf('Besar_Depan', $asal);
-	//$asal = preg_replace('/[^a-zA-Z0-9-]/', '&nbsp;', $asal;
-	//$asal = str_replace(array(' ', '<', '>', '&', '{', '}', '*'), array('&nbsp;'), $asal);
-
-	return $asal;
 }
 
 function gambar_latarbelakang($lokasi)
