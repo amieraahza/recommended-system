@@ -214,6 +214,13 @@ function huruf($jenis , $papar)
 	return $papar;
 }
 
+function kodHtml($papar)
+{
+	$papar = htmlentities($papar);
+	
+	return $papar;
+}
+
 function bersih($papar) 
 {
 	# lepas lari aksara khas dalam SQL
@@ -358,7 +365,7 @@ function GetContents($dir,$files=array())
 	//if(!($res=opendir($dir))): exit("folder $dir tidak wujud!!!");
 	if(!($res=@opendir($dir))): exit(\Aplikasi\Kitab\Peta::folderPaparTidakWujud());
 	else:
-		while(($file=readdir($res))==TRUE) 
+		while(($file=readdir($res))==TRUE)
 		if($file!="." && $file!="..")
 			if(is_dir("$dir/$file")) 
 				$files=GetContents("$dir/$file",$files);
