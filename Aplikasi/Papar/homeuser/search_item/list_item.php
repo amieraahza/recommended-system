@@ -7,5 +7,5 @@ $classTable[] = "table table-bordered data-table";
 
 include 'file_header.php';
 include 'file_menubar.php';
-//include 'papar_jadual0.php';
+include 'papar_jadual0.php';
 include 'file_footer.php';

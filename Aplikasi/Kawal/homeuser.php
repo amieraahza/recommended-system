@@ -122,8 +122,11 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'admin_item';
-		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
-		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
+		$this->papar->medan = array('item_name','item_website', 'picture', 'description');
+		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
+		$medan = '`item_id`,`item_name`,'
+		. ' concat_ws("","<img height=\"100\" width=\"100\" src=\"",`link_picture`,"\">") as picture,'
+		. ' `description`';
 		
 		# untuk list data dari myTable
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
@@ -144,6 +147,29 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 	{
 		echo '<br> dalam medanID = ' . $medanID;
 		echo '<br> dalam cariID = ' . $cariID;
+
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function item';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# untuk add form
+		$this->papar->myTable = 'admin_item';
+		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
+		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
+		
+		# untuk list data dari myTable
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status','apa'=>'0');
+			$carian[] = array('fix'=>'x=','atau'=>'AND',
+			'medan'=>$medanID,'apa'=> $cariID);
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan('list_oneItem', $noInclude = 1);
 	}
 #-------------------------------------------------------------------------------------------
 	function logout()
