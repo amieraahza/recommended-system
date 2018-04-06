@@ -47,8 +47,8 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		# https://stackoverflow.com/questions/41592249/how-to-use-php-client-for-google-custom-search-engine
 
 		$searchTerm = (isset($_POST['search'])) ? $_POST['search'] : 'samsung'; # cari barang apa 
-		$service = new \Aplikasi\Kitab\GoogleResults();
-		$items = $service->getSearchResults($searchTerm);
+		//$service = new \Aplikasi\Kitab\GoogleResults();
+		//$items = $service->getSearchResults($searchTerm);
 		//echo '<pre>' . $searchTerm . ' | $results=><hr>'; print_r($items); echo '</pre>';
 		//$this->readApi($items);
 		$this->saveApi($searchTerm, $items);
@@ -92,16 +92,16 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		//$this->tanya->dapatid($_POST['password']);
 
 		# Set pemboleubah utama
-		$myTable = 'admin_item';
-		$senarai = array($myTable);
-		$medan = '`cacheId`,`item_name`,`item_website`,`link_item`,`link_picture`,`description`';
+		//$myTable = 'admin_item';
+		//$senarai = array($myTable);
+		//$medan = '`cacheId`,`item_name`,`item_website`,`link_item`,`link_picture`,`description`';
 
 		# bentuk tatasusunan
-		$posmen = $this->tanya->semakApi($myTable, $senarai, $items);
-		$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
+		//$posmen = $this->tanya->semakApi($myTable, $senarai, $items);
+		//$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
 		# sql insert
 		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
-		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		//$this->log_sql($myTable, $medan, $senaraiData);
 		# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
@@ -116,7 +116,28 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 #-------------------------------------------------------------------------------------------
 	public function items($searchTerm)
 	{
-		echo 'kita berada di kelas homeuser function items';
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function item';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# untuk add form
+		$this->papar->myTable = 'admin_item';
+		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
+		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
+		
+		# untuk list data dari myTable
+			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status','apa'=>'0');
+			$carian[] = array('fix'=>'x=','atau'=>'AND',
+			'medan'=>'search_item','apa'=> $searchTerm);
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('list_item', $noInclude = 1);
 	}
 #-------------------------------------------------------------------------------------------
 	function logout()
