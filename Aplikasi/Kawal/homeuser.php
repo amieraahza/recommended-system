@@ -140,6 +140,12 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('list_item', $noInclude = 1);
 	}
 #-------------------------------------------------------------------------------------------
+	public function oneItem($medanID, $cariID)
+	{
+		echo '<br> dalam medanID = ' . $medanID;
+		echo '<br> dalam cariID = ' . $cariID;
+	}
+#-------------------------------------------------------------------------------------------
 	function logout()
 	{
 		\Aplikasi\Kitab\Sesi::init();

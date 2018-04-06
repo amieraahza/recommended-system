@@ -31,6 +31,10 @@ class Html_TD
 		{
 			?><td><?php echo nl2br($data) ?></td><?php
 		}
+		elseif(in_array($key,array('Picture')))
+		{
+			?><td><?php $this->popupPicture($data) ?></td><?php
+		}
 		else
 		{
 			?><td><?php echo $data ?></td><?php
@@ -66,6 +70,10 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		echo $class ?>"><?php echo $data ?></a><?php
 	}
 #==========================================================================================
+	public function popupPicture($data)
+	{
+		
+	}
 
 #==========================================================================================
 
