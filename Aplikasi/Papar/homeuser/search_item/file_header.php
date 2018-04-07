@@ -20,10 +20,54 @@
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 <style>
-  .login-dialog .modal-dialog 
-  {
-    width: 300px;
-  }
+.login-dialog .modal-dialog 
+{
+	width: 300px;
+}
+.form 
+{
+    margin:0;
+}
+
+.form li 
+{	
+    list-style:none;
+}
+
+.hide 
+{
+    display:none;
+}
+
+.rating input[type="radio"] 
+{
+    position:absolute;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    -khtml-opacity:0;
+    opacity:0;
+    cursor:pointer;
+    width:17px;
+}
+
+.rating span 
+{
+    width:24px;
+    height:16px;
+    line-height:16px;
+    padding:1px 22px 1px 0; /* 1px FireFox fix */
+    background:url(<?php echo $pautan ?>img/stars.png) no-repeat -22px 0;
+}
+
+.rating input[type="radio"]:checked + span 
+{
+    background-position:-22px 0;
+}
+
+.rating input[type="radio"]:checked + span ~ span 
+{
+    background-position:0 0;
+}
 </style>
 </head>
 

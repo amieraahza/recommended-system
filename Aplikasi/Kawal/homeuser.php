@@ -126,7 +126,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
 		$medan = '`item_id`,`item_name`,'
 		. ' concat_ws("","<img height=\"100\" width=\"100\" src=\"",`link_picture`,"\">") as picture,'
-		. ' `description`';
+		. ' `description`, `rating`';
 		
 		# untuk list data dari myTable
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
@@ -150,9 +150,9 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		//echo 'kite sekarang berada di kelas Homeadmin function item';
-		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
-		# untuk add form
+		/*# untuk add form
 		$this->papar->myTable = 'admin_item';
 		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
 		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
@@ -169,7 +169,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('list_oneItem', $noInclude = 1);
+		//$this->paparKandungan('list_oneItem', $noInclude = 1);//*/
 	}
 #-------------------------------------------------------------------------------------------
 	function logout()

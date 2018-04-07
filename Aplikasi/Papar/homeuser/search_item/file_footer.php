@@ -4,7 +4,7 @@
 $listData = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
 foreach($listData as $key => $val):
 ?>
-<!-- Button trigger modal -->
+<!-- Button trigger modal | start ------------------------------------------------------------------------------------------------------- -->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#my<?php echo $val ?>">
   my<?php echo $val ?>
   </button>
@@ -27,6 +27,7 @@ foreach($listData as $key => $val):
       </div>
     </div>
   </div>
+<!-- Button trigger modal | end ------------------------------------------------------------------------------------------------------- -->
 <?php 
 endforeach;
 ?>
