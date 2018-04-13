@@ -81,7 +81,34 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiData;
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function updateForm($medanID)
+	{
+			$myTable = 'admin_item';
+			$senarai = array('admin_item');
+			$medan = '`rating`';
+			$cariMedan = 'item_id';
+			$updateLink = 'form_update_item';
+			$deleteLink = 'item/list/';
+
+			return array($myTable, $senarai, $medan, $cariMedan, $updateLink, $deleteLink);
+	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakPost2($post, $myTable2, $senaraiJadual, $medanID, $dataID)
+	{
+		//echo '<pre>$post='; print_r($post); echo '</pre>';
+		//unset($post[$myTable2][0]['simpan']);
+
+		$posmen = array();
+		foreach ($post as $myTable => $value)
+			if ( in_array($myTable,$senaraiJadual) )
+				foreach ($value as $key => $value2)
+					foreach ($value2 as $kekunci => $papar)
+						$posmen[$myTable][$kekunci] = bersih($papar);
+						//echo "$kekunci";
+		# $myTable2 untuk cari primary key.
+		$posmen[$myTable2][$medanID] = bersih($dataID);
+		return $posmen;
+	}
 #---------------------------------------------------------------------------------------------------#
 #====================================================================================================
 }

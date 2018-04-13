@@ -80,8 +80,9 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		  </button>
 
 		  <!-- Modal -->
-		  <?php $mencari2 = URL . 'homeuser/oneItem/' . $khas['id'] . '/' . $khas['idData'] ; ?> 
-		  <form method="POST" action="<?php echo $mencari2 ?>" target="_blank">
+		  <?php $mencari2 = URL . 'homeuser/saveRating/' . $khas['id'] . '/' 
+		  	. $khas['idData'] . '/' . $khas['searchItem'] ; ?> 
+		  <form method="POST" action="<?php echo $mencari2 ?>">
 		  <div class="modal fade" id="my<?php echo $khas['idData'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content">
@@ -103,7 +104,9 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		  </div>
 		  </form>
 		<!-- Button trigger modal | end ------------------------------------------------------------------------------------------------------- -->
-		<?php 
+		<?php
+		//echo '<br>data=' . $data;
+		$this->paparRating($data, $khas);
 	}
 
 #==========================================================================================
@@ -114,19 +117,30 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		?></div><div align="center">
 		<ul class="form">
 		<li class="rating">
-		<input type="radio" name="rating" value="0" checked /><span class="hide"></span>
-		<input type="radio" name="rating" value="1" /><span></span>
-		<input type="radio" name="rating" value="2" /><span></span>
-		<input type="radio" name="rating" value="3" /><span></span>
-		<input type="radio" name="rating" value="4" /><span></span>
-		<input type="radio" name="rating" value="5" /><span></span>
+		<input type="radio" name="admin_item[0][rating]" value="0" checked /><span class="hide"></span>
+		<input type="radio" name="admin_item[0][rating]" value="1" /><span></span>
+		<input type="radio" name="admin_item[0][rating]" value="2" /><span></span>
+		<input type="radio" name="admin_item[0][rating]" value="3" /><span></span>
+		<input type="radio" name="admin_item[0][rating]" value="4" /><span></span>
+		<input type="radio" name="admin_item[0][rating]" value="5" /><span></span>
 		</li>
 		</ul><?php
 		echo '</div>';?>
 		<?php
 	}
 #==========================================================================================
-
+	public function paparRating($data, $khas)
+	{	//https://stackoverflow.com/questions/8118266/integrating-css-star-rating-into-an-html-form
+		if($data == NULL): ?>
+		give rating
+		<?php else: ?><div align="center">
+		<?php for($kira = 0; $kira < $data; $kira++): ?>
+		<i class="fa fa-star" aria-hidden="true"></i>
+		<?php endfor; ?>
+		</div>
+		<?php
+		endif; 
+	}
 #==========================================================================================
 
 #==========================================================================================

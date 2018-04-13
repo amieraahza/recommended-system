@@ -121,6 +121,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
 		# untuk add form
+		$this->papar->searchItem = $searchTerm;
 		$this->papar->myTable = 'admin_item';
 		$this->papar->medan = array('item_name','item_website', 'picture', 'description');
 		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
@@ -133,45 +134,108 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 			'medan'=>'delete_status','apa'=>'0');
 			$carian[] = array('fix'=>'x=','atau'=>'AND',
 			'medan'=>'search_item','apa'=> $searchTerm);
+			$susun[0]['susun'] = 'rating DESC';
+			//$susun[0]['dari'];
+			//$susun[0]['max'];
 			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
-				$this->papar->myTable, $medan, $carian, NULL);
+				$this->papar->myTable, $medan, $carian, $susun);
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		$this->paparKandungan('list_item', $noInclude = 1);
 	}
 #-------------------------------------------------------------------------------------------
-	public function oneItem($medanID, $cariID)
+	public function saveRating($medanID, $dataID, $searchItem)
 	{
-		echo '<br> dalam medanID = ' . $medanID;
-		echo '<br> dalam cariID = ' . $cariID;
+		//echo '<br> dalam medanID = ' . $medanID;
+		//echo '<br> dalam cariID = ' . $dataID;
 
 		# Set pemboleubah utama
 		//echo 'kite sekarang berada di kelas Homeadmin function item';
-		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 
-		/*# untuk add form
-		$this->papar->myTable = 'admin_item';
-		$this->papar->medan = array('item_name','item_website', 'link_item', 'link_picture', 'description');
-		$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
-		
-		# untuk list data dari myTable
-			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
-			'medan'=>'delete_status','apa'=>'0');
-			$carian[] = array('fix'=>'x=','atau'=>'AND',
-			'medan'=>$medanID,'apa'=> $cariID);
-			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
-				//tatasusunanCari(//	cariSql( 
-				cariSemuaData(
-				$this->papar->myTable, $medan, $carian, NULL);
+		if ($_POST['butang'] == 'Buang') 
+		{
+			//echo 'kita akan buang data';
+			list($myTable, $deleteLink) = $this->updateDelete($medanID, $dataID, $_POST);
+		}
+		elseif ($_POST['butang'] == 'Simpan')
+		{
+			//echo 'kita akan update data';
+			list($myTable, $deleteLink) = $this->updateDataSave($medanID, $dataID, $_POST);
+		}
 
-		# Pergi papar kandungan
-		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		//$this->paparKandungan('list_oneItem', $noInclude = 1);//*/
+		# pergi papar kandungan
+		$link = 'homeuser/items/' . $searchItem;
+		//echo 'location: ' . URL . $link;
+		header('location: ' . URL . $link); //*/
 	}
-#-------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
+	private function updateDelete($medanID, $dataID)
+	{
+		# Set pemboleubah utama
+		/*echo 'kite sekarang berada di kelas Homeadmin function updateDelete';
+		echo '<br>$action ' . $action . ' <br> ';
+		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';//*/
+
+		list($myTable, $senarai, $medan, 
+			$medanID, $updateLink, $deleteLink) 
+			= $this->tanya->updateForm($medanID);
+		$senaraiJadual = array($myTable);
+
+		# ubahsuai $posmen
+		$posmen = array();
+		$posmen = $this->tanya->semakPost3($_POST, $myTable, $senaraiJadual, 
+			$medanID, $dataID);
+		//$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->//
+			ubahSqlSimpan
+			//ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}# tamat ulang table//*/
+
+		//return array($myTable, $deleteLink);
+	}
+#--------------------------------------------------------------------------------------------------
+	private function updateDataSave($medanID, $dataID)
+	{
+		# Set pemboleubah utama
+		/*echo 'kite sekarang berada di kelas Homeadmin function updateDataSave';
+		echo '<br>$action ' . $action . ' <br> ';
+		echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';//*/
+		
+		list($myTable, $senarai, $medan, 
+			$medanID, $updateLink, $deleteLink) 
+			= $this->tanya->updateForm($medanID);
+		$senaraiJadual = array($myTable);
+
+		# ubahsuai $posmen
+		$posmen = array();
+		$posmen = $this->tanya->semakPost2($_POST, $myTable, $senaraiJadual, 
+			$medanID, $dataID);
+		//$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{# mula ulang table
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}# tamat ulang table//*/
+
+		return array($myTable, $deleteLink);
+	}
+#--------------------------------------------------------------------------------------------------
 	function logout()
 	{
 		\Aplikasi\Kitab\Sesi::init();
@@ -181,7 +245,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL);
 		//exit;
 	}
-#==========================================================================================
+#--------------------------------------------------------------------------------------------------
 }
 
 /*

@@ -22,6 +22,7 @@
 		$khas['idData'] = $row[$kira]['item_id'];
 		$khas['gambar'] = 'picture';
 		$khas['gambarData'] = $row[$kira]['picture'];
+		$khas['searchItem'] = $this->searchItem;
 		foreach ( $row[$kira] as $key=>$data ) 
 		{	
 			$html->paparURL($key, $data, $this->myTable, $khas);
