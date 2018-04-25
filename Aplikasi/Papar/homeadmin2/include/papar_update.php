@@ -3,7 +3,7 @@
 if(!isset($this->senarai[$this->myTable][0][$this->cariMedan]))
   echo 'data kosong juga<br>';
 else # $this->carian=='ada' - mula 
-{   $mencari2 = URL . 'homeadmin/updateSave/' . $this->myTable . '/' . $this->cariID; 
+{   $mencari2 = URL . 'homeadmin2/updateSave/' . $this->myTable . '/' . $this->cariID; 
   //echo $mencari2; ?>
   <form method="POST" action="<?php echo $mencari2 ?>"
   class="form-horizontal"><?php

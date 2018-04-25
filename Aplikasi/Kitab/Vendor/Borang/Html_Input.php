@@ -49,7 +49,6 @@ class Html_Input
 
 		if(in_array($jenisMedan,array('textbox')))
 		{#kod utk input text 
-			$data = null;
 			$input = '<div class="input-group input-group">' . $tabline
 				   //. '<span class="input-group-addon"></span>' . $tabline
 				   . '<input type="text" ' . $name . ' class="form-control">' . $tabline
@@ -114,6 +113,23 @@ class Html_Input
 				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
 				   . $tabline2 . '</div>'
 				   . '';
+		}
+		elseif(in_array($namaMedan,array('key_googleapi', 'cse_googleapi')))
+		{#senarai medan untuk table admin_item
+			//$data = null;
+			$input = '<div class="input-group input-group">' . $tabline
+				   . '<textarea ' . $name . ' rows="5" cols="20"' . $tabline
+				   . ' class="form-control">' . $data . '</textarea>' . $tabline 
+				   . '</div><span class="alert alert-info">' . $labelDibawah . '</span>'
+				   . '';
+			/*$input = '<div class="input-group input-group">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
+				   . '<input type="text" ' . $name 
+				   . ' value="' . $data . '"'
+				   . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . $labelDibawah . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';*///
 		}
 		
 		return $input; # pulangkan nilai

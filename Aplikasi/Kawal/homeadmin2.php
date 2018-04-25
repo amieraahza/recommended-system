@@ -67,8 +67,10 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->myTable = 'admin_website';
-		$this->papar->medan = array('website_name','website_link','note');
-		$medan = '`website_id`,`website_name`,`website_link`,`note`';
+		$this->papar->medan = array('website_name','website_link','note', 
+			'key_googleapi', 'cse_googleapi');
+		$medan = '`website_id`,`website_name`,`website_link`,`note`, 
+		`key_googleapi`, `cse_googleapi`';
 		# untuk list data dari myTable
 			$carian[] = array('fix'=>'x=','atau'=>'WHERE',
 			'medan'=>'delete_status','apa'=>'0');
@@ -79,7 +81,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
-		$this->paparKandungan('form_list_website', $noInclude = 1);
+		$this->paparKandungan('website', $noInclude = 1);
 	}
 #==========================================================================================
 	public function item($action)
@@ -176,7 +178,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
         # pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		header('location: ' . URL . 'homeadmin');
+		header('location: ' . URL . 'homeadmin2');
 		//*/
 	}
 #==========================================================================================
@@ -252,7 +254,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		}
 
 		# pergi papar kandungan
-		$link = 'homeadmin/' . $deleteLink;
+		$link = 'homeadmin2/' . $deleteLink;
 		//echo 'location: ' . URL . $link;
 		header('location: ' . URL . $link); //*/
 	}

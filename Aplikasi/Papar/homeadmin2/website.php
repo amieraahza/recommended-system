@@ -13,17 +13,18 @@ include 'include/menu_atas.php';
   <!-- /.col-lg-3 -->
 
   <div class="col-lg-9">
-    
-    <div class="card mt-4">
-    <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-      <div class="card-body">
-      <h3 class="card-title">Product Name</h3>
-      <h4>$24.99</h4>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-      <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>4.0 stars
-      </div>
+      <br><br>
+      <h3 class="card-title">Google Search API</h3>
+<!-- ######################################################################################################## -->
+<?php include 'include/list_table.php'; ?>
+<!-- ######################################################################################################## -->
+    <div class="card card-outline-secondary my-4">
+      <div class="card-header">Product Reviews</div>
+    <?php  include 'include/list_form.php'; ?>
+      
     </div>
-  <!-- /.card -->
+<!-- ######################################################################################################## -->
+
 
     <!-- div class="card card-outline-secondary my-4">
       <div class="card-header">Product Reviews</div>

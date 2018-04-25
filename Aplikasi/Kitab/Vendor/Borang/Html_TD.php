@@ -36,6 +36,16 @@ class Html_TD
 			echo "\n"; 
 			?><td><?php $this->popupPicture($data, $khas) ?></td><?php
 		}
+		elseif(in_array($key,array('website_id')))
+		{
+				$k[1] = URL . 'homeadmin2/updateform/' 
+				. $myTable . '/' . $data;
+				$pautan = ($data==null) ? $data :
+				'<a target="_blank" href="' . $k[1] . '" class="' 
+				. $this->butang() . '">' . $data . '</a>';
+
+			?><td><?php echo $pautan ?></td><?php
+		}
 		else
 		{
 			?><td><?php echo $data ?></td><?php

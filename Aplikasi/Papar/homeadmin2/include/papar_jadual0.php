@@ -7,7 +7,7 @@ foreach ($this->senarai as $myTable => $row)
 	{
 ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
-<?php include 'papar_jadual2.php'; ?>
+<?php include 'papar_jadual3.php'; ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php
 	} // if ( count($row)==0 )
