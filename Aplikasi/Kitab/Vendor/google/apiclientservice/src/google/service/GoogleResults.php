@@ -9,7 +9,7 @@ class GoogleResults
 { 
 #-----------------------------------------------------------------------------------------------------------------------------#
 	# Create one or more API keys at https://console.developers.google.com/apis/credentials
-	const GCSE_API_KEY = 'AIzaSyD1KORf2kRrS7r6n5rT4nwL9QBGD8QCAgk';
+	//const GCSE_API_KEY = 'AIzaSyD1KORf2kRrS7r6n5rT4nwL9QBGD8QCAgk';
 
 	/* The search engine id is specific to each "custom search engine"
 	* you have configured at https://cse.google.com/cse/all     
@@ -19,7 +19,7 @@ class GoogleResults
 
 	* If you fail to enable the Custom Search API before you try to execute a search
 	* the exception that is thrown will indicate this.  */
-	const GCSE_SEARCH_ENGINE_ID = '016724384925099384635:s9jmb6xrf-w';
+	//const GCSE_SEARCH_ENGINE_ID = '016724384925099384635:s9jmb6xrf-w';
 
 	private $service; # Holds the GoogleService for reuse
 	private $optParamSEID; # Holds the optParam for our search engine id
@@ -31,20 +31,20 @@ class GoogleResults
 	* 
 	* @param string $appName       Optional name for this google search
 	*/
-	public function __construct($appName = "My_Search") 
+	public function __construct($GCSE_API_KEY, $GCSE_SEARCH_ENGINE_ID, $appName = "My_Search") 
 	{
 		$client = new \Google_Client();
 		$client->setApplicationName($appName); # application name is an arbitrary name
 
 		# the developer key is the API Key for a specific google project
-		$client->setDeveloperKey(self::GCSE_API_KEY);
+		$client->setDeveloperKey($GCSE_API_KEY);
 		$this->service = new \Google_Service_Customsearch($client); # create new service
 
 		/* You must specify a custom search engine.  You can do this either by setting
 		* the element "cx" to the search engine id, or by setting the element "cref"
 		* to the public url for that search engine. For a full list of possible params see 
 		* https://github.com/google/google-api-php-client-services/blob/master/src/Google/Service/Customsearch/Resource/Cse.php //*/
-		$this->optParamSEID = array("cx"=>self::GCSE_SEARCH_ENGINE_ID);
+		$this->optParamSEID = array("cx"=>$GCSE_SEARCH_ENGINE_ID);
 	}
 #-----------------------------------------------------------------------------------------------------------------------------#
 	/**

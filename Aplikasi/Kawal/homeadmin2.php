@@ -321,7 +321,60 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		return array($myTable, $deleteLink);
 	}
 #==========================================================================================
+	public function crawl($action = NULL, $cariID)
+	{
+		echo 'sekarang kita berada di crawl';
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function updateform';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+
+		# Set pemboleubah utama
+		$this->papar->cariID = $cariID;
+		list($this->papar->myTable, $senarai, $medan, 
+			$this->papar->cariMedan, $updateLink) 
+			= $this->tanya->updateForm($action);
+		$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'website_name', 'apa'=>$cariID);
+		/*echo '<pre>action:'; print_r($action); echo '</pre>';
+		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
+		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
+		echo '<pre>medan:'; print_r($medan); echo '</pre>';//*/
+
+		# untuk list data dari myTable
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);
+		# google api
+			$this->searchApi($this->papar->senarai);
+			
+
+		# Pergi papar kandungan
+		$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan($updateLink, $noInclude = 1);
+
+	}
 #==========================================================================================
+	public function searchApi($senarai)
+	{
+		# Set pemboleubah utama
+		$GCSE_API_KEY = $senarai['admin_website'][0]['cse_googleapi'];
+		$GCSE_SEARCH_ENGINE_ID = $senarai['admin_website'][0]['key_googleapi'];
+		$searchTerm = (isset($_POST['search'])) ? $_POST['search'] : 'baju'; # cari barang apa 
+
+		#mula cari dalam google search api
+		$service = new \Aplikasi\Kitab\GoogleResults($GCSE_API_KEY, $GCSE_SEARCH_ENGINE_ID);
+		$items = $service->getSearchResults($searchTerm);
+		echo '<pre>' . $searchTerm . ' | $results=><hr>'; print_r($items); echo '</pre>';
+		//$this->readApi($items);
+		//$this->saveApi($searchTerm, $items);
+
+		/*
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		https://stackoverflow.com/questions/30284721/adding-google-api-client-to-codeigniter
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		//*/
+	}
 #==========================================================================================
 #==========================================================================================
 }
