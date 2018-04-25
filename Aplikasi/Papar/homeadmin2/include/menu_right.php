@@ -4,16 +4,16 @@
 	$mencari2 = URL . 'homeadmin2/crawl/admin_website';
 	$myTable = 'admin_website';
 	$namaMedan = 'search';
-	$name = 'name="' . $myTable . '[' . $namaMedan . ']"';
+	$name = 'name="' . $namaMedan . '"';
 	?>
 
 	<form method="POST" action="<?php echo $mencari2 ?>">
     <div class="list-group">
-    <input type="text" <?php echo $name ?> class="form-control"> 
-    <input type="submit" name="butang" value="lazada" class="list-group-item active">
-    <input type="submit" name="butang" value="shopee" class="list-group-item">
-    <input type="submit" name="butang" value="11street" class="list-group-item">
-    <input type="submit" name="butang" value="lelong" class="list-group-item">
-    <input type="submit" name="butang" value="mudah" class="list-group-item">
+    <input type="text" <?php echo $name ?> placeholder="search item" class="form-control"> 
+    <input type="submit" name="website_name" value="lazada" class="list-group-item active">
+    <input type="submit" name="website_name" value="shopee" class="list-group-item">
+    <input type="submit" name="website_name" value="11street" class="list-group-item">
+    <input type="submit" name="website_name" value="lelong" class="list-group-item">
+    <input type="submit" name="website_name" value="mudah" class="list-group-item">
     </div>
 	</form>

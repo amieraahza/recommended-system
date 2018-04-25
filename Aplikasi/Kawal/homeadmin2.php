@@ -321,20 +321,27 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		return array($myTable, $deleteLink);
 	}
 #==========================================================================================
-	public function crawl($action = NULL, $cariID)
+	public function crawl($action = NULL)
 	{
-		echo 'sekarang kita berada di crawl';
+		//echo 'sekarang kita berada di crawl';
 		# Set pemboleubah utama
 		//echo 'kite sekarang berada di kelas Homeadmin function updateform';
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		/*sebelum:Array
+		(
+    		[search] => blouse
+    		[website_name] => lelong
+		)//*/
 
 		# Set pemboleubah utama
-		$this->papar->cariID = $cariID;
+		$this->papar->cariID = (isset($_POST['website_name'])) ? $_POST['website_name'] : 'lazada'; # cari website apa;
 		list($this->papar->myTable, $senarai, $medan, 
 			$this->papar->cariMedan, $updateLink) 
 			= $this->tanya->updateForm($action);
 		$carian[] = array('fix'=>'x=','atau'=>'WHERE',
-			'medan'=>'website_name', 'apa'=>$cariID);
+			'medan'=>'website_name', 'apa'=>$this->papar->cariID);
+		$carian[] = array('fix'=>'x=','atau'=>'AND',
+			'medan'=>'delete_status', 'apa'=>'0');
 		/*echo '<pre>action:'; print_r($action); echo '</pre>';
 		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
 		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
@@ -346,7 +353,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 				cariSemuaData(
 				$this->papar->myTable, $medan, $carian, NULL);
 		# google api
-			$this->searchApi($this->papar->senarai);
+			$this->searchApi($this->papar->senarai);//*/
 			
 
 		# Pergi papar kandungan
@@ -365,6 +372,9 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		#mula cari dalam google search api
 		$service = new \Aplikasi\Kitab\GoogleResults($GCSE_API_KEY, $GCSE_SEARCH_ENGINE_ID);
 		$items = $service->getSearchResults($searchTerm);
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		//echo '<pre>$GCSE_API_KEY='; print_r($GCSE_API_KEY); echo '</pre>';
+		//echo '<pre>$GCSE_SEARCH_ENGINE_ID='; print_r($GCSE_SEARCH_ENGINE_ID); echo '</pre>';
 		echo '<pre>' . $searchTerm . ' | $results=><hr>'; print_r($items); echo '</pre>';
 		//$this->readApi($items);
 		//$this->saveApi($searchTerm, $items);
