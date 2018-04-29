@@ -49,7 +49,7 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function ubahPosmen($posmen)
 	{
-		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 		$cantum = "('";
 		$senaraiData = array();
 		foreach ($posmen as $key => $value1):
@@ -260,6 +260,67 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $senarai, $medan);
 	}
 #---------------------------------------------------------------------------------------------------#
+	public function semakApi($myTable, $senarai, $items)
+	{
+		# validasi data $_POST, masuk dalam $posmen, validasi awal
+		//$this->semakPembolehubah($items);
+		echo 'jumlah senarai adalah ' . count($items) . '<hr>';
+		# paparkan items yang tertentu sahaja
+		for($kira = 0; $kira < count($items); $kira++)
+		{
+			$cacheId = (isset($items[$kira]['cacheId'])) ?
+				$items[$kira]['cacheId']
+				: '#no cacheId found';
+			$og_title = (isset($items[$kira]['pagemap']['metatags'][0]['og:title'])) ?
+				$items[$kira]['pagemap']['metatags'][0]['og:title']
+				: '#no title found';
+			$website = (isset($items[$kira]['displayLink'])) ?
+				$items[$kira]['displayLink']
+				: '#no website found';
+			$og_url = (isset($items[$kira]['pagemap']['metatags'][0]['og:url'])) ?
+				$items[$kira]['pagemap']['metatags'][0]['og:url']
+				: '#not url found';
+			$og_image = (isset($items[$kira]['pagemap']['metatags'][0]['og:image'])) ? 
+				$items[$kira]['pagemap']['metatags'][0]['og:image']
+				: '#no image found';
+			$og_description = (isset($items[$kira]['pagemap']['metatags'][0]['og:description'])) ?
+				$items[$kira]['pagemap']['metatags'][0]['og:description']
+				: '#no description found';
+			$bestrating = (isset($results[$kira]['pagemap']['aggregaterating'][0]['bestrating'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['bestrating']
+				: '#no bestrating found';
+			$ratingvalue = (isset($results[$kira]['pagemap']['aggregaterating'][0]['ratingvalue'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['ratingvalue']
+				: '#no ratingvalue found';
+			$reviewcount = (isset($results[$kira]['pagemap']['aggregaterating'][0]['reviewcount'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['reviewcount']
+				: '#no reviewcount found';                          
+
+			//echo 'tajuk ' . $kira . '<br>';
+			//echo '0)cacheId:' . $cacheId . '<br>'; 
+			$posmen[$kira]['cacheId'] = bersih($cacheId);
+			//echo '1)item_name:' . $og_title . '<br>';
+			$posmen[$kira]['item_name'] = bersih($og_title);
+			//echo '2)item_website:' . $website . '<br>';
+			$posmen[$kira]['item_website'] = bersih($website);
+			//echo '3)link_item:' . $og_url . '<br>';
+			$posmen[$kira]['link_item'] = bersih($og_url);
+			//echo '4)item_picture:' . $og_image . '<br>';
+			$posmen[$kira]['item_picture'] = bersih($og_image);
+			//echo '5)description:' . $og_description . '<br>';
+			$posmen[$kira]['description'] = bersih($og_description);
+			//echo '<hr>';
+			$posmen[$kira]['bestrating'] = bersih($bestrating);
+			//echo '<hr>';
+			$posmen[$kira]['ratingvalue '] = bersih($ratingvalue);
+			//echo '<hr>';
+			$posmen[$kira]['reviewcount'] = bersih($reviewcount);
+			//echo '<hr>';
+		}//*/
+		
+		# pulangkan pemboleubah
+		return $posmen;		
+	}  
 #---------------------------------------------------------------------------------------------------#
 #---------------------------------------------------------------------------------------------------#
 

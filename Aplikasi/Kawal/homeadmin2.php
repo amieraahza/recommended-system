@@ -429,10 +429,10 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 
 		foreach ($senarai as $myTable => $row):
 			foreach ($row as $key => $medan):
-			echo 'searchTerm = ' . $searchTerm . '<br>';
-			echo 'website_name = ' . $medan['website_name'] . '<br>';
-			echo 'key_googleapi = ' . $medan['key_googleapi'] . '<br>';
-			echo 'cse_googleapi = ' . $medan['cse_googleapi'] . '<hr>';
+			//echo 'searchTerm = ' . $searchTerm . '<br>';
+			//echo 'website_name = ' . $medan['website_name'] . '<br>';
+			//echo 'key_googleapi = ' . $medan['key_googleapi'] . '<br>';
+			//echo 'cse_googleapi = ' . $medan['cse_googleapi'] . '<hr>';
 			# google api
 			$this->searchApi2($searchTerm, $medan['website_name'], 
 				$medan['key_googleapi'], $medan['cse_googleapi']);
@@ -453,16 +453,82 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
 		//echo '<pre>$GCSE_API_KEY='; print_r($GCSE_API_KEY); echo '</pre>';
 		//echo '<pre>$GCSE_SEARCH_ENGINE_ID='; print_r($GCSE_SEARCH_ENGINE_ID); echo '</pre>';
-		echo '<pre>' . $searchTerm . ':website_name = ' .$website_name
-		 . ' | $results=><hr>'; print_r($items); echo '</pre>';
+		//echo '<pre>' . $searchTerm . ':website_name = ' .$website_name
+		// . ' | $results=><hr>'; print_r($items); echo '</pre>';
 		//$this->readApi($items);
-		//$this->saveApi($searchTerm, $items);
+		$this->saveApi($searchTerm, $items);
+	}
+#==========================================================================================
+	public function readApi($results)
+	{
+		for($kira = 0; $kira <= count($results); $kira++)
+		{
+		
+			$cacheId = (isset($results[$kira]['cacheId'])) ?
+				$results[$kira]['cacheId']
+				: '<font color="red">not tittle found</font>';
+			$og_title = (isset($results[$kira]['pagemap']['metatags'][0]['og:title'])) ?
+				$results[$kira]['pagemap']['metatags'][0]['og:title']
+				: '<font color="red">not tittle found</font>';
+			$og_url = (isset($results[$kira]['pagemap']['metatags'][0]['og:url'])) ?
+				$results[$kira]['pagemap']['metatags'][0]['og:url']
+				: '#not url found';
+			$og_image = (isset($results[$kira]['pagemap']['metatags'][0]['og:image'])) ? 
+				$results[$kira]['pagemap']['metatags'][0]['og:image']
+				: '';
+			$og_description = (isset($results[$kira]['pagemap']['metatags'][0]['og:description'])) ?
+				$results[$kira]['pagemap']['metatags'][0]['og:description']
+				: '<font color="red">not description found</font>';
+			$bestrating = (isset($results[$kira]['pagemap']['aggregaterating'][0]['bestrating'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['bestrating']
+				: '<font color="red">not description found</font>';
+			$ratingvalue = (isset($results[$kira]['pagemap']['aggregaterating'][0]['ratingvalue'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['ratingvalue']
+				: '<font color="red">not description found</font>';
+			$reviewcount = (isset($results[$kira]['pagemap']['aggregaterating'][0]['reviewcount'])) ?
+				$results[$kira]['pagemap']['aggregaterating'][0]['reviewcount']
+				: '<font color="red">not description found</font>';
 
-		/*
-		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
-		https://stackoverflow.com/questions/30284721/adding-google-api-client-to-codeigniter
-		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+			echo '<h1>' . $kira . ':' . $og_title . '</h1>';
+			echo '<h6>' . $og_description . '</h6>';
+			echo '<br><a target="blank" href="' . $og_url . '">' . $og_url . '</a>';
+			echo '<br><img src="' . $og_image . '"></a>';
+			echo '<br>cacheId:'  . $cacheId;
+			echo '<br>bestrating:'  . $bestrating;
+			echo '<br>ratingvalue:'  . $ratingvalue;
+			echo '<br>reviewcount :'  . $reviewcount ;
+			echo '<hr>';
+		}
+	}
+#==========================================================================================
+	public function saveApi($searchTerm, $items)
+	{
+		# debug $_POST
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+
+		# Set pemboleubah utama
+		$myTable = 'admin_item2';
+		$senarai = array($myTable);
+		$medan = '`cacheId`,`item_name`,`item_website`,`link_item`,`link_picture`,`description`,'
+			. '`bestrating`, `ratingvalue`, `reviewcount`';
+
+		# bentuk tatasusunan
+		$posmen = $this->tanya->semakApi($myTable, $senarai, $items);
+		$senaraiData = $this->tanya->ubahPosmen($posmen, $myTable);
+		# sql insert
+		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->log_sql($myTable, $medan, $senaraiData);
+		# semak data
+			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
+		
+		# pergi papar kandungan
+		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
+		//header('location: ' . URL . 'homeuser/items/' . $searchTerm);
 		//*/
 	}
+#==========================================================================================
 #==========================================================================================
 }
