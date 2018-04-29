@@ -146,7 +146,7 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 		{
 			$myTable = 'admin_website';
 			$senarai = array('admin_website');
-			$medan = '`website_id`,`website_name`,`website_link`,`note`, `key_googleapi`, `cse_googleapi`';
+			$medan = '`website_id`,`website_name`,`website_link`,`note`, `key_googleapi`, `cse_googleapi`, `delete_status`';
 			$cariMedan = 'website_id';
 			$updateLink = 'form_update_website';
 			$deleteLink = 'website/list/';

@@ -386,5 +386,83 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #==========================================================================================
+	public function crawlAll($action = 'admin_website')
+	{
+		//echo 'sekarang kita berada di crawlAll';
+		# Set pemboleubah utama
+		//echo 'kite sekarang berada di kelas Homeadmin function updateform';
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		/*sebelum:Array
+		(
+	    [search] => blouse
+	    [submit] => find
+		)//*/
+
+		# Set pemboleubah utama
+		list($this->papar->myTable, $senarai, $medan, 
+			$this->papar->cariMedan, $updateLink) 
+			= $this->tanya->updateForm($action);
+		$carian[] = array('fix'=>'x=','atau'=>'WHERE',
+			'medan'=>'delete_status', 'apa'=>'0');
+		/*echo '<pre>action:'; print_r($action); echo '</pre>';
+		echo '<pre>myTable:'; print_r($myTable); echo '</pre>';
+		echo '<pre>senarai:'; print_r($senarai); echo '</pre>';
+		echo '<pre>medan:'; print_r($medan); echo '</pre>';//*/
+
+		# untuk list data dari myTable
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, NULL);
+			$this->allWebsite($this->papar->senarai);
+			
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		//$this->paparKandungan($updateLink, $noInclude = 1);//*/
+
+	}
+#==========================================================================================
+	public function allWebsite($senarai)
+	{
+		$searchTerm = (isset($_POST['search'])) ? $_POST['search'] : 'baju'; # cari barang apa 
+
+		foreach ($senarai as $myTable => $row):
+			foreach ($row as $key => $medan):
+			echo 'searchTerm = ' . $searchTerm . '<br>';
+			echo 'website_name = ' . $medan['website_name'] . '<br>';
+			echo 'key_googleapi = ' . $medan['key_googleapi'] . '<br>';
+			echo 'cse_googleapi = ' . $medan['cse_googleapi'] . '<hr>';
+			# google api
+			$this->searchApi2($searchTerm, $medan['website_name'], 
+				$medan['key_googleapi'], $medan['cse_googleapi']);
+	
+		endforeach;
+		endforeach;
+	}
+#==========================================================================================
+	public function searchApi2($searchTerm, $website_name, $key_googleapi, $cse_googleapi)
+	{
+		# Set pemboleubah utama
+		$GCSE_API_KEY = $cse_googleapi;
+		$GCSE_SEARCH_ENGINE_ID = $key_googleapi;
+
+		#mula cari dalam google search api
+		$service = new \Aplikasi\Kitab\GoogleResults($GCSE_API_KEY, $GCSE_SEARCH_ENGINE_ID);
+		$items = $service->getSearchResults($searchTerm);
+		//echo '<pre>sebelum:'; print_r($_POST); echo '</pre>';
+		//echo '<pre>$GCSE_API_KEY='; print_r($GCSE_API_KEY); echo '</pre>';
+		//echo '<pre>$GCSE_SEARCH_ENGINE_ID='; print_r($GCSE_SEARCH_ENGINE_ID); echo '</pre>';
+		echo '<pre>' . $searchTerm . ':website_name = ' .$website_name
+		 . ' | $results=><hr>'; print_r($items); echo '</pre>';
+		//$this->readApi($items);
+		//$this->saveApi($searchTerm, $items);
+
+		/*
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		https://stackoverflow.com/questions/30284721/adding-google-api-client-to-codeigniter
+		https://stackoverflow.com/questions/23051160/google-oauth-library-working-in-session-in-mvc-php
+		//*/
+	}
 #==========================================================================================
 }
