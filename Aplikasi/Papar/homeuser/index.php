@@ -39,6 +39,7 @@
       <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#anjung">Home</a>
+      <a class="navbar-brand" href="<?php echo URL ?>homeuser/recommendWeb">Recommend</a>
       <a class="navbar-brand" href="<?php echo URL ?>homeuser/logout">
         <span class="glyphicon glyphicon-off"></span>Logout</a>
     </div>
