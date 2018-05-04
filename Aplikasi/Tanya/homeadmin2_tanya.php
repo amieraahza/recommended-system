@@ -49,19 +49,26 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function ubahPosmen($posmen)
 	{
-		echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-		$cantum = "('";
+		//echo '<pre>$posmen='; print_r($posmen); echo '</pre>';
+		$cantum = "";
 		$senaraiData = array();
 		foreach ($posmen as $key => $value1):
-			foreach ($value1 as $key2): 
+			//echo '<br> $value1 = ' . $value1;
+			foreach ($value1 as $key2):
+			//echo '<br> $key2 = ' . $key2;
+			$cantum .= "('"; 
 			foreach ($key2 as $key3 => $dataS):
+				echo '<br> $value1 = ' . $value1;
 				$cantum .= ($dataS) . "', '"; 
 			endforeach;
+			$cantum .= "'),\r";
 		endforeach;
+		$senaraiData[] = $cantum;
+		//$senaraiData[$key] = substr($senaraiData[$key], 0, -5) . ')';
 		endforeach;
-		$cantum .= "')";
-		$senaraiData[0] = $cantum;
-		$senaraiData[0] = substr($senaraiData[0], 0, -5) . ')';
+		//$cantum .= "'),\r";
+		
+		//echo '<pre>$senaraiData='; print_r($senaraiData); echo '</pre>';
 		# pulangkan pemboleubah
 		return $senaraiData;
 	}
@@ -264,7 +271,7 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		# validasi data $_POST, masuk dalam $posmen, validasi awal
 		//$this->semakPembolehubah($items);
-		echo 'jumlah senarai adalah ' . count($items) . '<hr>';
+		//echo 'jumlah senarai adalah ' . count($items) . '<hr>';
 		# paparkan items yang tertentu sahaja
 		for($kira = 0; $kira < count($items); $kira++)
 		{
@@ -298,23 +305,23 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 
 			//echo 'tajuk ' . $kira . '<br>';
 			//echo '0)cacheId:' . $cacheId . '<br>'; 
-			$posmen[$kira]['cacheId'] = bersih($cacheId);
+			$posmen[$myTable][$kira]['cacheId'] = bersih($cacheId);
 			//echo '1)item_name:' . $og_title . '<br>';
-			$posmen[$kira]['item_name'] = bersih($og_title);
+			$posmen[$myTable][$kira]['item_name'] = bersih($og_title);
 			//echo '2)item_website:' . $website . '<br>';
-			$posmen[$kira]['item_website'] = bersih($website);
+			$posmen[$myTable][$kira]['item_website'] = bersih($website);
 			//echo '3)link_item:' . $og_url . '<br>';
-			$posmen[$kira]['link_item'] = bersih($og_url);
+			$posmen[$myTable][$kira]['link_item'] = bersih($og_url);
 			//echo '4)item_picture:' . $og_image . '<br>';
-			$posmen[$kira]['item_picture'] = bersih($og_image);
+			$posmen[$myTable][$kira]['item_picture'] = bersih($og_image);
 			//echo '5)description:' . $og_description . '<br>';
-			$posmen[$kira]['description'] = bersih($og_description);
+			$posmen[$myTable][$kira]['description'] = bersih($og_description);
 			//echo '<hr>';
-			$posmen[$kira]['bestrating'] = bersih($bestrating);
+			$posmen[$myTable][$kira]['bestrating'] = bersih($bestrating);
 			//echo '<hr>';
-			$posmen[$kira]['ratingvalue '] = bersih($ratingvalue);
+			$posmen[$myTable][$kira]['ratingvalue '] = bersih($ratingvalue);
 			//echo '<hr>';
-			$posmen[$kira]['reviewcount'] = bersih($reviewcount);
+			$posmen[$myTable][$kira]['reviewcount'] = bersih($reviewcount);
 			//echo '<hr>';
 		}//*/
 		
