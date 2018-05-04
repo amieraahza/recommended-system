@@ -127,12 +127,12 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		?></div><div align="center">
 		<ul class="form">
 		<li class="rating">
-		<input type="radio" name="admin_item[0][rating]" value="0" checked /><span class="hide"></span>
-		<input type="radio" name="admin_item[0][rating]" value="1" /><span></span>
-		<input type="radio" name="admin_item[0][rating]" value="2" /><span></span>
-		<input type="radio" name="admin_item[0][rating]" value="3" /><span></span>
-		<input type="radio" name="admin_item[0][rating]" value="4" /><span></span>
-		<input type="radio" name="admin_item[0][rating]" value="5" /><span></span>
+		<input type="radio" name="admin_item2[0][rating]" value="0" checked /><span class="hide"></span>
+		<input type="radio" name="admin_item2[0][rating]" value="1" /><span></span>
+		<input type="radio" name="admin_item2[0][rating]" value="2" /><span></span>
+		<input type="radio" name="admin_item2[0][rating]" value="3" /><span></span>
+		<input type="radio" name="admin_item2[0][rating]" value="4" /><span></span>
+		<input type="radio" name="admin_item2[0][rating]" value="5" /><span></span>
 		</li>
 		</ul><?php
 		echo '</div>';?>
