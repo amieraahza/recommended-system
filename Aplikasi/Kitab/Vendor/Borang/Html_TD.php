@@ -18,6 +18,15 @@ class Html_TD
 			?><td><?php echo $p0 . $p1 ?></td><?php
 			?><td><?php echo $data ?></td><?php
 		}
+		elseif(in_array($key,array('item_website')))
+		{
+			$k1 = 'http://' . bersih($data);
+			$p1 = '<a target="_blank" href="' . $k1 . '">'
+				. ($k1) . '</a>&nbsp;';
+
+			?><td><?php echo $p1 ?></td><?php
+
+		}
 		elseif(in_array($key,array('posdaftar')))
 		{
 				list($k,$btn) = $this->posdaftar($data);
