@@ -26,6 +26,8 @@ class Tanya
 			$dimana .= " $atau`$medan` <= '$cariApa' $akhir\r";
 		elseif($fix=='x>=')
 			$dimana .= " $atau`$medan` >= '$cariApa' $akhir\r";
+		elseif($fix=='x>')
+			$dimana .= " $atau`$medan` > '$cariApa' $akhir\r";
 		elseif($fix=='like')
 			$dimana .= " $atau`$medan` like '$cariApa' $akhir\r";
 		elseif($fix=='xlike')
