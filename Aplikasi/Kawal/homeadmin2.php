@@ -420,7 +420,6 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		# Pergi papar kandungan
 		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
 		//$this->paparKandungan($updateLink, $noInclude = 1);//*/
-
 	}
 #==========================================================================================
 	public function allWebsite($senarai)
