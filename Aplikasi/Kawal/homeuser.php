@@ -92,7 +92,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		//$this->tanya->dapatid($_POST['password']);
 
 		# Set pemboleubah utama
-		//$myTable = 'admin_item';
+		//$myTable = 'admin_item2';
 		//$senarai = array($myTable);
 		//$medan = '`cacheId`,`item_name`,`item_website`,`link_item`,`link_picture`,`description`';
 
@@ -122,10 +122,10 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		# untuk add form
 		$this->papar->searchItem = $searchTerm;
-		$this->papar->myTable = 'admin_item';
+		$this->papar->myTable = 'admin_item2';
 		$this->papar->medan = array('item_name','item_website', 'picture', 'description');
 		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
-		$medan = '`item_id`,`item_name`,'
+		$medan = '`item_id`,`item_name`, `item_website`,'
 		. ' concat_ws("","<img height=\"100\" width=\"100\" src=\"",`link_picture`,"\">") as picture,'
 		. ' `description`, `rating`';
 		
@@ -234,6 +234,29 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table//*/
 
 		return array($myTable, $deleteLink);
+	}
+#--------------------------------------------------------------------------------------------------
+	function recommendWeb()
+	{
+		echo 'kita sekarang berada di ' . __METHOD__ . '';
+
+		# untuk list data dari myTable
+			$this->papar->myTable = $myTable = 'admin_item2';
+			$medan = 'search_item, item_website, count(*) as recommend';
+			$carian[] = array('fix'=>'x>','atau'=>'WHERE',
+			'medan'=>'rating','apa'=> '3');
+			$susun[0]['susun'] = 'rating DESC';
+			$susun[0]['kumpul'] = '1, 2';
+			//$susun[0]['dari'];
+			//$susun[0]['max'];
+			$this->papar->senarai[$myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$myTable, $medan, $carian, $susun);
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('list_web', $noInclude = 1);
 	}
 #--------------------------------------------------------------------------------------------------
 	function logout()
