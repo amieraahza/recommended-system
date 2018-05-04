@@ -83,8 +83,8 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 #---------------------------------------------------------------------------------------------------#
 	public function updateForm($medanID)
 	{
-			$myTable = 'admin_item';
-			$senarai = array('admin_item');
+			$myTable = 'admin_item2';
+			$senarai = array('admin_item2');
 			$medan = '`rating`';
 			$cariMedan = 'item_id';
 			$updateLink = 'form_update_item';
@@ -110,5 +110,17 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 		return $posmen;
 	}
 #---------------------------------------------------------------------------------------------------#
+	function recommendWebsite()
+	{
+		/*SELECT search_item, item_website, count(*) as recommend 
+		FROM admin_item2
+		WHERE rating > '3'
+		GROUP BY 1, 2
+		ORDER BY rating DESC*/
+	}
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
+#---------------------------------------------------------------------------------------------------#
+
 #====================================================================================================
 }
