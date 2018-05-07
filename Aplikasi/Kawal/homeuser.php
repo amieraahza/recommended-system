@@ -238,17 +238,33 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 #--------------------------------------------------------------------------------------------------
 	function recommendWeb()
 	{
-		echo 'kita sekarang berada di ' . __METHOD__ . '';
+		//echo 'kita sekarang berada di ' . __METHOD__ . '';
+
+		# untuk list data dari myTable
+			list($this->papar->myTable, $medan, $carian, $susun) = $this->tanya->dataWebsite();
+			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
+				//tatasusunanCari(//	cariSql( 
+				cariSemuaData(
+				$this->papar->myTable, $medan, $carian, $susun);
+
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('list_web', $noInclude = 1);
+	}
+#--------------------------------------------------------------------------------------------------
+	function recommendWeb2()
+	{
+		//echo 'kita sekarang berada di ' . __METHOD__ . '';
 
 		# untuk list data dari myTable
 			$this->papar->myTable = $myTable = 'admin_item2';
 			$medan = 'search_item, item_website, count(*) as recommend';
 			$carian[] = array('fix'=>'x>','atau'=>'WHERE',
-			'medan'=>'rating','apa'=> '3');
-			$susun[0]['susun'] = 'rating DESC';
+			'medan'=>'rating','apa'=>'3');
+			$susun[0]['susun'] = '2 ASC';
 			$susun[0]['kumpul'] = '1, 2';
 			//$susun[0]['dari'];
-			//$susun[0]['max'];
+			$susun[0]['max'] = '5';
 			$this->papar->senarai[$myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(
