@@ -1,4 +1,4 @@
-<table id="example" class="display" style="width:100%">
+<table id="example" class="display" style="width:100%">	
 	<?php
 	$printed_headers = false; # mula bina jadual
 	#-----------------------------------------------------------------
@@ -22,6 +22,7 @@
 		$html = new \Aplikasi\Kitab\Html_TD;
 		foreach ( $row[$kira] as $key=>$data ) 
 		{	
+			//$data = bersih($data);
 			$html->paparURL($key, $data, $this->myTable);
 		} 
 		?></tr>

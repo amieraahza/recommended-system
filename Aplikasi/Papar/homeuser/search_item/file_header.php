@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo $pautan ?>css/animate.css">
   <link rel="stylesheet" type="text/css" href="<?php echo $pautan ?>css/style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+<!-- data filtering-------------------------------------------------------------------------------------------------------------------------------- -->
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
   
   <!-- =======================================================
@@ -78,5 +79,4 @@ tfoot input {
   }
 </style>
 </head>
-
 <body>

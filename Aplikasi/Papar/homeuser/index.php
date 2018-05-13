@@ -9,7 +9,7 @@
   <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
   <div class="container wow fadeInUp delay-03s">
     <div class="row">
-      <h2 class="subs-title text-center">Filter item</h2>
+      <h2 class="subs-title text-center">Find item</h2>
       <div class="subcription-info text-center">
         <form class="subscribe_form" action="<?php echo URL ?>homeuser/search" method="post">
         <input placeholder="Find item" class="email" id="email" name="search" type="text">
@@ -18,7 +18,7 @@
       </div><!-- class="subcription-info text-center" -->
     </div><!-- end row -->
   </div>
-<!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------------------------------------------- -
   <div class="container wow fadeInUp delay-03s">
     <div class="row">
       <h2 class="subs-title text-center">Recommended</h2>
@@ -27,9 +27,8 @@
         <input placeholder="Find item" class="email" id="email" name="search" type="text">
         <input class="subscribe" value="Search" type="submit">
         </form>
-      </div><!-- class="subcription-info text-center" -->
+      </div><!-- class="subcription-info text-center" --
     </div><!-- end row -->
-  </div>
 <!-- --------------------------------------------------------------------------------------------------------------------------------------- -->
 <section>
   <div class="container">
