@@ -125,7 +125,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		$this->papar->myTable = 'admin_item2';
 		$this->papar->medan = array('item_name','item_website', 'picture', 'description');
 		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
-		$medan = '`item_id`,`item_name`, `item_website`,'
+		$medan = '`item_id`,`item_name`, `item_website`,`price`, `colour`,'
 		. ' concat_ws("","<img height=\"100\" width=\"100\" src=\"",`link_picture`,"\">") as picture,'
 		. ' `description`, `rating`';
 		
@@ -275,6 +275,15 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		$this->paparKandungan('list_web', $noInclude = 1);
 	}
 #--------------------------------------------------------------------------------------------------
+	function dataTable()
+	{
+		# Pergi papar kandungan
+		//$this->semakPembolehubah($this->papar->senarai); # Semak data dulu
+		$this->paparKandungan('papar_jadual4', $noInclude = 1);
+	}
+#--------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------
+
 	function logout()
 	{
 		\Aplikasi\Kitab\Sesi::init();

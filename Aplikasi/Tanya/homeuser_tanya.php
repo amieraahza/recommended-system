@@ -119,7 +119,7 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 		$susun[0]['susun'] = '3 DESC';
 		$susun[0]['kumpul'] = '1, 2';
 		//$susun[0]['dari'];
-		$susun[0]['max'] = '2';
+		//$susun[0]['max'] = '2';
 
 		return array($myTable, $medan, $carian, $susun);
 	}

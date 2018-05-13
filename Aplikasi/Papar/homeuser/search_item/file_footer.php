@@ -22,6 +22,7 @@
   </footer>
   
 <?php include 'file_jquery.php' ?>
+<?php include $jquery_khas . '.php' ?>
 
 </body>
 
