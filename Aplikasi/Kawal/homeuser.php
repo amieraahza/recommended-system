@@ -236,12 +236,12 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		return array($myTable, $deleteLink);
 	}
 #--------------------------------------------------------------------------------------------------
-	function recommendWeb()
+	function recommendWeb($searchItem)
 	{
 		//echo 'kita sekarang berada di ' . __METHOD__ . '';
 
 		# untuk list data dari myTable
-			list($this->papar->myTable, $medan, $carian, $susun) = $this->tanya->dataWebsite();
+			list($this->papar->myTable, $medan, $carian, $susun) = $this->tanya->dataWebsite($searchItem);
 			$this->papar->senarai[$this->papar->myTable] = $this->tanya->
 				//tatasusunanCari(//	cariSql( 
 				cariSemuaData(

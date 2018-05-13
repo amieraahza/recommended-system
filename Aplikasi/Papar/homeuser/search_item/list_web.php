@@ -4,9 +4,9 @@
 $classTable[] = "table table-bordered table-striped";
 $classTable[] = "table table-bordered table-striped with-check";
 $classTable[] = "table table-bordered data-table";
-$classTable[] = "display";
-$papar_jadual = "3.2";
-$jquery_khas = "file_jquery_recommended";
+//$classTable[] = "display";
+$papar_jadual = "3.1";
+$jquery_khas = "kosong";
 
 include 'file_header.php';
 include 'file_menubar.php';

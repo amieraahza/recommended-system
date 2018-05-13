@@ -110,16 +110,18 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 		return $posmen;
 	}
 #---------------------------------------------------------------------------------------------------#
-	function dataWebsite()
+	function dataWebsite($searchItem)
 	{
 		$myTable = 'admin_item2';
 		$medan = 'search_item, item_website, count(*) as recommend';
 		$carian[] = array('fix'=>'x>','atau'=>'WHERE',
 		'medan'=>'rating','apa'=>'3');
+		$carian[] = array('fix'=>'%like%','atau'=>'AND',
+		'medan'=>'search_item','apa'=>$searchItem);
 		$susun[0]['susun'] = '3 DESC';
 		$susun[0]['kumpul'] = '1, 2';
 		//$susun[0]['dari'];
-		//$susun[0]['max'] = '2';
+		$susun[0]['max'] = '3';
 
 		return array($myTable, $medan, $carian, $susun);
 	}
