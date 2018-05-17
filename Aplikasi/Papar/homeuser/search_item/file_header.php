@@ -25,22 +25,31 @@
 <style>
 .login-dialog .modal-dialog 
 {
-	width: 300px;
+	width: 300px; 
 }
 .form 
 {
-    margin:0;
+    margin:0; text-align: center; 
+    height: 50px;
+    width: 370px; 
 }
 
 .form li 
 {	
-    list-style:none;
+    text-align: center; 
+    list-style:none; 
 }
 
 .hide 
 {
     display:none;
 }
+
+tfoot input {
+  width: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+  }
 
 .rating input[type="radio"] 
 {
@@ -59,7 +68,7 @@
     height:16px;
     line-height:16px;
     padding:1px 22px 1px 0; /* 1px FireFox fix */
-    background:url(img/stars.png) no-repeat -22px 0;
+    background:url(<?php echo $pautan ?>img/stars.png) no-repeat -22px 0;
 }
 
 .rating input[type="radio"]:checked + span 
@@ -71,12 +80,7 @@
 {
     background-position:0 0;
 }
-
-tfoot input {
-  width: 100%;
-  padding: 3px;
-  box-sizing: border-box;
-  }
+ 
 </style>
 </head>
 <body>
