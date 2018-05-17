@@ -10,7 +10,7 @@ $jquery_khas = "file_jquery_list_item";
 include 'file_header.php';
 include 'file_menubar.php';
 
-echo '<h1 class="btn btn-primary btn-lg">recommended Web:'
+echo '<h1 class="btn btn-primary btn-lg">Recommendation for you:'
 . '<a class="label label-success"
 href="' . URL . 'homeuser/recommendWeb/' . $this->searchItem . '">'
 . $this->searchItem .'</a></h1>';
