@@ -42,7 +42,8 @@ class Html_TD
 		}
 		elseif(in_array($key,array('rating')))
 		{
-			echo "\n"; 
+			//echo "<td>$data</td>"; 
+			echo "\n";
 			?><td><?php $this->popupPicture($data, $khas) ?></td><?php
 		}
 		elseif(in_array($key,array('website_id')))
@@ -94,20 +95,20 @@ public function butang($warna = 'info',$saiz = 'kecil')
 	{
 		?>
 		<!-- Button trigger modal | start ------------------------------------------------------------------------------------------------------- -->
-		  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#my<?php echo $khas['idData'] ?>">
-		  my<?php echo $khas['idData'] ?>
+		  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rate<?php echo $khas['idData'] ?>">
+		  Rate item
 		  </button>
 
 		  <!-- Modal -->
 		  <?php $mencari2 = URL . 'homeuser/saveRating/' . $khas['id'] . '/' 
 		  	. $khas['idData'] . '/' . $khas['searchItem'] ; ?> 
 		  <form method="POST" action="<?php echo $mencari2 ?>">
-		  <div class="modal fade" id="my<?php echo $khas['idData'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal fade" id="rate<?php echo $khas['idData'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
 			  <div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				  <h4 class="modal-title" id="myModalLabel">My<?php echo $khas['idData'] ?></h4>
+				  <h4 class="modal-title" id="myModalLabel">Rate Item!</h4>
 				</div>
 				<div class="modal-body">
 <!-- form start------------------------------------------------------------------------------------------------------------------------------- -->
@@ -142,6 +143,23 @@ public function butang($warna = 'info',$saiz = 'kecil')
 		<input type="radio" name="admin_item2[0][rating]" value="3" /><span></span>
 		<input type="radio" name="admin_item2[0][rating]" value="4" /><span></span>
 		<input type="radio" name="admin_item2[0][rating]" value="5" /><span></span>
+		</li>
+		</ul><?php
+		echo '</div>';?>
+		<?php
+	}
+#==========================================================================================
+		public function form1($data, $khas)
+	{	//https://stackoverflow.com/questions/8118266/integrating-css-star-rating-into-an-html-form
+		echo '<div align="center">' . "\n" . $khas['gambarData'] . "\n" ?>
+		<ul class="form">
+		<li class="rating">
+		<input type="radio" name="admin_item2[0][rating]" id="str0" value="0"><label for="str0"></label>
+	    <input type="radio" name="admin_item2[0][rating]" id="str1" value="1"><label for="str1"></label>
+	    <input type="radio" name="admin_item2[0][rating]" id="str2" value="2"><label for="str2"></label>
+	    <input type="radio" name="admin_item2[0][rating]" id="str3" value="3"><label for="str3"></label>
+	    <input type="radio" name="admin_item2[0][rating]" id="str4" value="4"><label for="str4"></label>
+	    <input type="radio" name="admin_item2[0][rating]" id="str5" value="5"><label for="str5"></label>
 		</li>
 		</ul><?php
 		echo '</div>';?>
