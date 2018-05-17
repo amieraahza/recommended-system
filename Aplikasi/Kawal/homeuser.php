@@ -123,10 +123,10 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 		# untuk add form
 		$this->papar->searchItem = $searchTerm;
 		$this->papar->myTable = 'admin_item2';
-		$this->papar->medan = array('item_name','item_website', 'picture', 'description');
+		$this->papar->medan = array('item_name','item_website', 'price', 'colour', 'picture', 'description');
 		//$medan = '`item_id`,`item_name`,`link_item`,`link_picture`, `description`';
-		$medan = '`item_id`,`item_name`, `item_website`,`price`, `colour`,'
-		. ' concat_ws("","<img height=\"100\" width=\"100\" src=\"",`link_picture`,"\">") as picture,'
+		$medan = '`item_id`,`item_name`,  TRIM(`item_website`) as `item_website`,`price`, `colour`,'
+		. ' concat_ws("","<img height=\"200\" width=\"200\" src=\"",`link_picture`,"\">") as picture,'
 		. ' `description`, `rating`';
 		
 		# untuk list data dari myTable
