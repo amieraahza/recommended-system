@@ -20,10 +20,15 @@
 	{# papar data $row ------------------------------------------------
 	?><tr><td><?php echo ($kira+1)?></td><?php
 		$html = new \Aplikasi\Kitab\Html_TD;
+		$khas['id'] = 'item_id';
+		$khas['idData'] = $row[$kira]['item_id'];
+		$khas['gambar'] = 'picture';
+		$khas['gambarData'] = $row[$kira]['picture'];
+		$khas['searchItem'] = $this->searchItem;
 		foreach ( $row[$kira] as $key=>$data ) 
 		{	
 			//$data = bersih($data);
-			$html->paparURL($key, $data, $this->myTable);
+			$html->paparURL($key, $data, $this->myTable, $khas);
 		} 
 		?></tr>
 	<?php
