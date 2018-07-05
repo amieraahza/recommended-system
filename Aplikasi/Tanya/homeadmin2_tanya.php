@@ -53,21 +53,22 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 		$cantum = "";
 		$senaraiData = array();
 		foreach ($posmen as $key => $value1):
+			//echo '<br> $key = ' . $key;
 			//echo '<br> $value1 = ' . $value1;
 			foreach ($value1 as $key2):
 			//echo '<br> $key2 = ' . $key2;
 			$cantum .= "('"; 
 			foreach ($key2 as $key3 => $dataS):
-				echo '<br> $value1 = ' . $value1;
+				//echo '<br> $key3 = ' . $key3;
+				//echo '<br> $value1 = ' . $value1;
 				$cantum .= ($dataS) . "', '"; 
 			endforeach;
-			$cantum .= "'),\r";
+			$cantum .= "'), \r";
 		endforeach;
+		$cantum = substr($cantum, 0, -8) . ')';
 		$senaraiData[] = $cantum;
-		//$senaraiData[$key] = substr($senaraiData[$key], 0, -5) . ')';
 		endforeach;
-		//$cantum .= "'),\r";
-		
+
 		//echo '<pre>$senaraiData='; print_r($senaraiData); echo '</pre>';
 		# pulangkan pemboleubah
 		return $senaraiData;
