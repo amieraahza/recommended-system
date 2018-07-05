@@ -258,7 +258,7 @@ class Homeuser extends \Aplikasi\Kitab\Kawal
 
 		# untuk list data dari myTable
 			$this->papar->myTable = $myTable = 'admin_item2';
-			$medan = 'search_item, item_website, count(*) as recommend';
+			$medan = 'search_item, item_website, count(*) as `total item recommended`';
 			$carian[] = array('fix'=>'x>','atau'=>'WHERE',
 			'medan'=>'rating','apa'=>'3');
 			$susun[0]['susun'] = '2 ASC';
