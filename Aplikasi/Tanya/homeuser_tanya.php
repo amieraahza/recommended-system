@@ -113,7 +113,7 @@ class Homeuser_Tanya extends \Aplikasi\Kitab\Tanya
 	function dataWebsite($searchItem)
 	{
 		$myTable = 'admin_item2';
-		$medan = 'search_item, item_website, count(*) as recommend';
+		$medan = 'search_item, item_website, count(*) as `total item recommend`';
 		$carian[] = array('fix'=>'x>','atau'=>'WHERE',
 		'medan'=>'rating','apa'=>'3');
 		$carian[] = array('fix'=>'%like%','atau'=>'AND',

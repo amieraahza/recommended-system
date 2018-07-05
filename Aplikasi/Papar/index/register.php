@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Flat Sign Up Form Responsive Widget Template| Home :: W3layouts</title>
+<title>Sign Up</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!--header-->
 	<div class="header-w3l">
-		<h1>Flat Sign Up Form</h1>
+		<h1>Sign Up</h1>
 	</div>
 <!--//header-->
 <!---728x90--->
@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!---728x90--->
 <!--footer-->
 <div class="footer-w3">
-	<p>&copy; 2016 Flat Sign Up Form. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+	<p>&copy; 2016 Flat Sign Up Form. All rights reserved | Design by</p>
 </div>
 <!--//footer-->
 <!---728x90--->
