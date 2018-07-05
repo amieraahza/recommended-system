@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Item - Start Bootstrap Template</title>
+    <title>Admin-Clerk</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo $pautan?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
