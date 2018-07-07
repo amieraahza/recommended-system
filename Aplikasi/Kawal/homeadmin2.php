@@ -182,7 +182,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 #==========================================================================================
-	public function list($action = NULL)
+	/*public function Websitelist($action = NULL)
 	{
 		# Set pemboleubah utama
 		echo 'kite sekarang berada di kelas Homeadmin function list';
@@ -190,9 +190,8 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		list($myTable, $senarai, $medan)= $this->tanya->selectTable($action);
-		# bentuk tatasusunan
-		
-	}
+		# bentuk tatasusunan	
+	}*/
 #==========================================================================================
 	public function updateform($action = NULL, $cariID)
 	{
