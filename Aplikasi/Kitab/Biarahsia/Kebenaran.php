@@ -53,8 +53,8 @@ class Kebenaran
 		if ($kunci == false || !in_array($level,$senaraiLevel))
 		{
 			Sesi::destroy();
-			header('location:' . URL . 'index/keluar');
-			//header('location:' . URL . '');
+			//header('location:' . URL . 'index/keluar');
+			header('location:' . URL . '');
 			exit;
 		}
 		//*/
