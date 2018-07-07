@@ -9,7 +9,6 @@ class GoogleResults
 { 
 #-----------------------------------------------------------------------------------------------------------------------------#
 	# Create one or more API keys at https://console.developers.google.com/apis/credentials
-	//const GCSE_API_KEY = 'AIzaSyD1KORf2kRrS7r6n5rT4nwL9QBGD8QCAgk';
 
 	/* The search engine id is specific to each "custom search engine"
 	* you have configured at https://cse.google.com/cse/all     
@@ -19,7 +18,6 @@ class GoogleResults
 
 	* If you fail to enable the Custom Search API before you try to execute a search
 	* the exception that is thrown will indicate this.  */
-	//const GCSE_SEARCH_ENGINE_ID = '016724384925099384635:s9jmb6xrf-w';
 
 	private $service; # Holds the GoogleService for reuse
 	private $optParamSEID; # Holds the optParam for our search engine id
