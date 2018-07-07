@@ -7,7 +7,7 @@ class Homeadmin2 extends \Aplikasi\Kitab\Kawal
 	{
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
-		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = huruf('kecil', namaClass($this));
 	}
 
