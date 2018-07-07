@@ -112,7 +112,7 @@ class Homeadmin2_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($myTable, $senarai, $medan);
 	}
 #---------------------------------------------------------------------------------------------------#
-	public function list($action)
+	public function listData($action)
 	{
 		if ($action == 'admin_website') 
 		{
