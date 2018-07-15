@@ -20,8 +20,14 @@
     </div>
   </footer>
   
-<?php include 'file_jquery.php' ?>
-<?php include $jquery_khas . '.php' ?>
+<?php 
+include 'file_jquery.php'; 
+include 'file_jquery_list_item.php'; 
+include 'file_jquery_list_item2.php';
+include 'file_jquery_recommended.php';
+?>
+
+
 
 </body>
 
